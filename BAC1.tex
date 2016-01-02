@@ -331,7 +331,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \renewcommand{\TheAuthor}{}
 \pagestyle{empty}
 
-\pagenumbering{Roman}
+
 
 \pagestyle{plain}
 %\pagenumbering{roman}
@@ -340,7 +340,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \tableofcontents
 
 \newpage
-
+\pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abkürzungen%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -392,10 +392,10 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \include{Einleitung}
 \include{TheoretischerTeil}
 \renewcommand{\TheAuthor}{\ZotD}
-\include{PraktischerTeil_Materialien_Aufbau}
+%\include{PraktischerTeil_Materialien_Aufbau}
 \renewcommand{\TheAuthor}{\MarR}
-\include{Analyse_&_Config}
-\include{Schlussbetrachtungen}
+%\include{Analyse_&_Config}
+%\include{Schlussbetrachtungen}
 
 
 
@@ -409,7 +409,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 
 
 % Anhang je nach Wunsch
-\begin{appendices}
+%\begin{appendices}
 %\addcontentsline{toc}{chapter}{Anhang}
 %\include{Anhang_Mathematik}                 % A
 %\include{Anhang_FormatDerParameterdateien}  % B
@@ -417,7 +417,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 %\include{Anhang_Datenblaetter}              % D
 %\include{Anhang_Glossar}                    % E
 %\include{Verfasser-Einzelabschnitte}
-\end{appendices}
+%\end{appendices}
 
 
 % Schmutzblatt (leere Seite am Ende)

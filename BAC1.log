@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  15 DEC 2015 12:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.7)  2 JAN 2016 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -688,9 +688,7 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@dimlist=\toks53
 )
 (./BAC1.aux (./Titelblatt.aux) (./Danksagung.aux) (./Abstract.aux)
-(./Einleitung.aux) (./TheoretischerTeil.aux)
-(./PraktischerTeil_Materialien_Aufbau.aux) (./Analyse_&_Config.aux)
-(./Schlussbetrachtungen.aux))
+(./Einleitung.aux) (./TheoretischerTeil.aux))
 \openout1 = `BAC1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 321.
@@ -796,7 +794,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 \openout2 = `Titelblatt.aux'.
 
-(./Titelblatt.tex <BilderAllgemein/Logo.pdf, id=75, 273.14847pt x 102.43068pt>
+(./Titelblatt.tex <BilderAllgemein/Logo.pdf, id=47, 273.14847pt x 102.43068pt>
 File: BilderAllgemein/Logo.pdf Graphic file (type pdf)
 
 <use BilderAllgemein/Logo.pdf>
@@ -929,7 +927,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 371.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 371.
- [2
+ [1
 
 ] (./BAC1.lof)
 \tf@lof=\write7
@@ -943,7 +941,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 376.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 376.
- [3
+ [2
 
 ] (./BAC1.lot)
 \tf@lot=\write8
@@ -958,7 +956,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 381.
 
-[4
+[3
 
 ] (./BAC1.lol)
 \tf@lol=\write9
@@ -972,7 +970,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 389.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 389.
- [5
+ [4
 
 ]
 \openout2 = `Einleitung.aux'.
@@ -984,9 +982,9 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 29.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 29.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1029,70 +1027,6 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
-\openout2 = `PraktischerTeil_Materialien_Aufbau.aux'.
-
- (./PraktischerTeil_Materialien_Aufbau.tex
-Kapitel 3.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 21.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 21.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 25.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 25.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 29.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 29.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 395.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 395.
- [3
-
-
-
-]
-\openout2 = `Analyse_&_Config.aux'.
-
- (./Analyse_&_Config.tex
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 4.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 4.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 397.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 397.
- [4
-
-
-]
-\openout2 = `Schlussbetrachtungen.aux'.
-
- (./Schlussbetrachtungen.tex
-Kapitel 4.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 20.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 20.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 398.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 398.
- [5
-
-
-
-]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 406.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1105,27 +1039,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--34
 
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 412.
+(babel)             in language  on input line 425.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 412.
- [6
+(babel)             in language  on input line 425.
+ [3
 
 
-]
-LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 412.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 412.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 412.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 412.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 412.
- [7
-
-
-] <BilderAllgemein/leer.jpg, id=204, 120.45pt x 120.45pt>
+] <BilderAllgemein/leer.jpg, id=151, 120.45pt x 120.45pt>
 File: BilderAllgemein/leer.jpg Graphic file (type jpg)
 
 <use BilderAllgemein/leer.jpg>
@@ -1139,36 +1059,35 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 434.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 434.
- [8 <./BilderAllgemein/leer.jpg>]
+ [4 <./BilderAllgemein/leer.jpg>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 434.
  (./BAC1.aux
 (./Titelblatt.aux) (./Danksagung.aux) (./Abstract.aux) (./Einleitung.aux)
-(./TheoretischerTeil.aux) (./PraktischerTeil_Materialien_Aufbau.aux)
-(./Analyse_&_Config.aux) (./Schlussbetrachtungen.aux))
+(./TheoretischerTeil.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 434.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 434.
 Package rerunfilecheck Info: File `BAC1.out' has not changed.
-(rerunfilecheck)             Checksum: 6A2BE90E1ADEA92520A5C04442FD54D1;1125.
+(rerunfilecheck)             Checksum: 7B2C6B9332B0956484CC05E36AAEF1FE;671.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 434.
  ) 
 Here is how much of TeX's memory you used:
- 13255 strings out of 493089
- 193784 string characters out of 6134842
- 323142 words of memory out of 5000000
- 16309 multiletter control sequences out of 15000+600000
- 30346 words of font info for 79 fonts, out of 8000000 for 9000
+ 13207 strings out of 493089
+ 192893 string characters out of 6134842
+ 324142 words of memory out of 5000000
+ 16295 multiletter control sequences out of 15000+600000
+ 28475 words of font info for 75 fonts, out of 8000000 for 9000
  1157 hyphenation exceptions out of 8191
- 42i,12n,43p,777b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,43p,896b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/t
 exmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on BAC1.pdf (17 pages, 237593 bytes).
+Output written on BAC1.pdf (13 pages, 234968 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

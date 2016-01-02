@@ -1,19 +1,12 @@
 \select@language {ngerman}
-\contentsline {chapter}{Abk\"urzungsverzeichnis }{II}{chapter*.1}
-\contentsline {chapter}{Abbildungsverzeichnis}{III}{chapter*.3}
-\contentsline {chapter}{Tabellenverzeichnis}{IV}{chapter*.4}
-\contentsline {chapter}{Quellcodeverzeichnis}{V}{chapter*.5}
+\contentsline {chapter}{Abk\"urzungsverzeichnis }{I}{chapter*.1}
+\contentsline {chapter}{Abbildungsverzeichnis}{II}{chapter*.3}
+\contentsline {chapter}{Tabellenverzeichnis}{III}{chapter*.4}
+\contentsline {chapter}{Quellcodeverzeichnis}{IV}{chapter*.5}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.6}
 \contentsline {section}{\numberline {1.1}Motivation und Aufgabenstellung}{1}{section.7}
 \contentsline {section}{\numberline {1.2}Aufbau und Kapitel\"ubersicht}{1}{section.8}
 \contentsline {chapter}{\numberline {2}Theoretischer Teil}{2}{chapter.9}
 \contentsline {section}{\numberline {2.1}Mobile IPv6}{2}{section.10}
 \contentsline {section}{\numberline {2.2}Vergleich Mobile IPv4 zu Mobile IPv6}{2}{section.11}
-\contentsline {chapter}{\numberline {3}Praktischer Teil}{3}{chapter.12}
-\contentsline {section}{\numberline {3.1}Verwendete Materialien}{3}{section.13}
-\contentsline {section}{\numberline {3.2}Physischer Aufbau}{3}{section.14}
-\contentsline {section}{\numberline {3.3}Analyse der Hardware und Software}{4}{section.15}
-\contentsline {section}{\numberline {3.4}Implementation der Konfiguration}{4}{section.16}
-\contentsline {chapter}{\numberline {4}Zusammenfassung und Ausblick}{5}{chapter.17}
-\contentsline {chapter}{Literaturverzeichnis}{6}{chapter.17}
-\contentsline {chapter}{Anhang}{7}{section*.19}
+\contentsline {chapter}{Literaturverzeichnis}{3}{section.11}
