@@ -22,15 +22,27 @@
 \label{chapter_grundlagen}
 
 %Der Kernteil der Arbeit beginnt mit einer Darstellung der Grundlagen. Dieser, in der Regel rein theoretische Abschnitt, beinhaltet Begriffsbestimmungen, Beschreibungen zur Methodik und zum verwendeten Material, zu Hard- und Software sowie Begriffsabgrenzungen und anderweitigen Grundlagen ("`Material und Methode"'), welche zum Verständnis der nachfolgenden Ausführungen notwendig sind.
-Im folgenden Kapitel wird auf die theoretische Funktionsweise von \textbf{Mobile IPv6} eingegangen, sowie den Unterschied zwischen den Versionen IPv4 und IPv6. 
+Mobile IPv6 ist ein Protokoll, dass von der IETF entwickelt wurden welches es ermöglicht, eine feste IPv6 Adresse einem mobilen Endgerät zuzuweisen und diese auch bei Netzwechseln zu behalten.  
+Im folgenden Kapitel wird auf die theoretische Funktionsweise von \textbf{Mobile IPv6} eingegangen, sowie den Unterschied zwischen den Versionen IPv4 und IPv6. In diesem Teil werden einige Fachbegriffe in Bezug auf Mobile IPv6 verwendet, welche für das Verständnis der Funktionsweise wichtig sind. Diese Begriffe werden in Abschnitt \ref{section_Begriffserklaerung_MobileIPV6} kurz erklärt\cite{RFC_Mobile_IPv6}. 
+\section{Begriffsdefinition}
+\label{section_Begriffserklaerung_MobileIPV6}
+\subsection*{home address}
+Die \textit{home address} ist eine Unicast Adresse welche dem Mobilen Knoten zugewiesen wird, sie wird als permanente Adresse dieses Knoten benutzt. Diese befindet sich innerhalb des Home Links des mobilen Knoten. IP Routing Mechanismen schicken an die Home Adresse gerichtete Pakete an den Home Link. Falls es mehrere Präfixe auf dem Home Link gibt, kann ein Mobiler Knoten auch mehrere Home Adressen besitzen.
+
+\subsection*{mobile node}
+Ein mobile node ist ein Knoten, welcher seinen Standort wechseln kann (z.B. Laptop, Mobil Telefon etc.). Dieser Knoten bleibt aber auch unter seiner Home Adresse ereichbar, wenn er von seinem \textit{Heimnetz A} in ein \textit{Fremdnetz B} wechselt.
+
+\subsection*{correspondent node}
+
+
 \section{Mobile IPv6}
 \label{section_TheorieMobileIPv6}
 
-\subsection*{Beispiel}
+%\subsection*{Beispiel}
 
 
 
-\section{Vergleich Mobile IPv4 zu Mobile IPv6}
+%\section{Vergleich Mobile IPv4 zu Mobile IPv6}
 
 
 
