@@ -26,16 +26,44 @@ Mobile IPv6 ist ein Protokoll, dass von der IETF entwickelt wurden welches es er
 Im folgenden Kapitel wird auf die theoretische Funktionsweise von \textbf{Mobile IPv6} eingegangen, sowie den Unterschied zwischen den Versionen IPv4 und IPv6. In diesem Teil werden einige Fachbegriffe in Bezug auf Mobile IPv6 verwendet, welche für das Verständnis der Funktionsweise wichtig sind. Diese Begriffe werden in Abschnitt \ref{section_Begriffserklaerung_MobileIPV6} kurz erklärt\cite{RFC_Mobile_IPv6}. 
 \section{Begriffsdefinition}
 \label{section_Begriffserklaerung_MobileIPV6}
-\subsection*{home address}
-Die \textit{home address} ist eine Unicast Adresse welche dem Mobilen Knoten zugewiesen wird, sie wird als permanente Adresse dieses Knoten benutzt. Diese befindet sich innerhalb des Home Links des mobilen Knoten. IP Routing Mechanismen schicken an die Home Adresse gerichtete Pakete an den Home Link. Falls es mehrere Präfixe auf dem Home Link gibt, kann ein Mobiler Knoten auch mehrere Home Adressen besitzen.
 
-\subsection*{mobile node}
-Ein mobile node ist ein Knoten, welcher seinen Standort wechseln kann (z.B. Laptop, Mobil Telefon etc.). Dieser Knoten bleibt aber auch unter seiner Home Adresse ereichbar, wenn er von seinem \textit{Heimnetz A} in ein \textit{Fremdnetz B} wechselt.
+\subsection*{Home Adresse}
+Die \textit{Home Adresse} ist eine Unicast Adresse welche dem Mobilen Knoten zugewiesen wird, sie wird als permanente Adresse dieses Knoten benutzt. Diese befindet sich innerhalb des Home Links des mobilen Knoten. IP Routing Mechanismen schicken an die Home Adresse gerichtete Pakete an den Home Link. Falls es mehrere Präfixe auf dem Home Link gibt, kann ein Mobiler Knoten auch mehrere Home Adressen besitzen.
 
-\subsection*{correspondent node}
+\subsection*{Home Subnetz Präfix}
+Unter \textit{Home Subnetz Präfix} versteht man das IP-Subnetzpräfix, dass der Home Adresse des mobilen Knoten entspricht.
 
+\subsection*{Home Link}
+Der \textit{Home Link}, ist der Link an welchem das Home-Subnetzpräfix definiert ist.
 
-\section{Mobile IPv6}
+\subsection*{Mobiler node}
+Ein \textit{Mobiler node} ist ein Knoten, welcher seinen Standort wechseln kann (z.B. Laptop, Mobil Telefon etc.). Dieser Knoten bleibt aber auch unter seiner Home Adresse erreichbar, wenn er von seinem \textit{Heimnetz A} in ein \textit{Fremdnetz B} wechselt.
+
+\subsection*{Correspondent node}
+Ein \textit{Correspondent node} ist ein peer (gleichberechtigter Teilnehmer) Knoten mit dem der mobile Knoten kommuniziert. Der correspondant node kann ein mobiler oder stationärer Knoten sein.
+
+\subsection*{Foreign Subnet Präfix}
+Unter \textit{Foreign Subnet Präfix} versteht man jedes Subnet Präfix, das nicht dem Home Subnet Präfix des mobilen Knotens entspricht.
+
+\subsection*{Foreign Link}
+Ist jeder Link, der nicht dem Home Link des mobilen Knotens entspricht.
+
+\subsection*{Care-of Adresse}
+Die \textit{Care-of Adresse} ist eine Unicast Adresse, die dem mobilen Knoten in einem fremden Netz zugewiesen wird. Ein mobiler Knoten kann auch mehrere Care-of Adressen besitzen (z.B. mit verschiedenen Präfixes), die Care-of Adresse mit der er bei seinem \textit{Home Agent} registriert ist, wird als \textit{\glqq Primary\grqq Care-of Adresse} bezeichnet.
+
+\subsection*{Home Agent}
+Als \textit{Home Agent} wird der Router bezeichnet der sich am \textit{Home Link} des mobilen Knotens befindet und wo die aktuelle \textit{Care-of Adresse} des mobilen Knoten registriert ist. Wenn sich der mobile Knoten nicht im Heimnetz befindet, fängt der \textit{Home Agent} die Pakete, die an die Home Adresse des mobilen Knoten im Heimnetz gerichtet sind ab, \glqq verpackt\grqq diese und sendet sie über einen Tunnel an die registrierte \textit{Care-of Adresse} des mobilen Knoten.
+
+\subsection*{Binding}
+Als \textit{Binding} versteht man die Zuordnung der \textit{Home Adresse} des mobilen Knotens, der \textit{Care-of Adresse} des mobilen Knotens für die noch verbleibende lifetime.
+
+\subsection*{Registrierung}
+Unter \textit{Registrierung} versteht man, wenn ein Binding Update von einem mobilen Knoten an seinen Home Agent oder an einen Corresponding Node  geschickt und von diesen registriert wird.
+
+\subsection*{Binding Authentisierung}
+Damit ein Corresponding Node weiss, dass ein Absender berechtigt ist das Binding zu ändern, muss eine Registrierung bei einem Corresponding Node autorisiert werden.\newpage
+
+%\section{Mobile IPv6}
 \label{section_TheorieMobileIPv6}
 
 %\subsection*{Beispiel}
