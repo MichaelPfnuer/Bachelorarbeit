@@ -25,4 +25,9 @@
 C.~Perkins, E.~Tellabs, and D.~Johnson, ``Mobility support in ipv6,'' Internet
   Engineering Task Force (IETF), Request for Comments 6275, July 2011.
 
+\bibitem{Packet_Overhead}
+H.~Zolfagharnasab, ``Reducing packet overhead in mobile ipv6,''
+  \emph{International Journal of Distributed and Parallel Systems (IJDPS)},
+  vol.~3, no.~3, May 2012.
+
 \end{thebibliography}

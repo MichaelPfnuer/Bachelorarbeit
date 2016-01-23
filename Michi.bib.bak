@@ -5,8 +5,19 @@
   title =       {Mobility Support in IPv6},
   institution = {Internet Engineering Task Force (IETF)},
   year =        {2011},
-  type =        {Request for Comments : 6275},
+  type =        {Request for Comments},
+  number =      {6275},
   month =       {July}
+}
+
+@Article{,
+  author =  {Hooshiar Zolfagharnasab},
+  title =   {Reducing Packet Overhead in Mobile IPv6},
+  journal = {International Journal of Distributed and Parallel Systems (IJDPS)},
+  year =    {2012},
+  volume =  {3},
+  number =  {3},
+  month =   {May}
 }% This file was created with JabRef 2.11.1.
 % Encoding: UTF8
 
