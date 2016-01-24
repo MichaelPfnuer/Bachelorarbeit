@@ -22,11 +22,10 @@
 \label{chapter_grundlagen}
 
 %Der Kernteil der Arbeit beginnt mit einer Darstellung der Grundlagen. Dieser, in der Regel rein theoretische Abschnitt, beinhaltet Begriffsbestimmungen, Beschreibungen zur Methodik und zum verwendeten Material, zu Hard- und Software sowie Begriffsabgrenzungen und anderweitigen Grundlagen ("`Material und Methode"'), welche zum Verständnis der nachfolgenden Ausführungen notwendig sind.
-Mobile IPv6 ist ein Protokoll, dass von der IETF entwickelt wurde, welches es ermöglicht, eine feste IPv6 Adresse einem mobilen Endgerät zuzuweisen und diese auch bei einem Netzwechsel zu behalten. Da das Mobile IPv6 Protokoll einen anderen Header verwendet als das Standard IPv6 Protokoll, wird in Abschnitt \ref{subsection_Mobility_Header} auf den \textbf{Mobility Header, Routing Header Type 2} sowie dessen Funktionen und Einsatzbereiche eingegangen.  
-Im Folgenden wird auf die theoretische Funktionsweise von \textbf{Mobile IPv6} eingegangen, sowie der Unterschied zwischen den Versionen Mobile IPv4 und IPv6 betrachtet. In diesem Teil werden einige Fachbegriffe in Bezug auf Mobile IPv6 verwendet, welche für das Verständnis der Funktionsweise wichtig sind. Diese Begriffe werden in Abschnitt \ref{subsection_Begriffserklaerung_MobileIPV6} kurz erklärt\cite{RFC_Mobile_IPv6}. 
-\section{Mobile IPv6}
-\label{section_Mobile_IPv6}
-\subsection{Begriffsdefinition}
+Mobile IPv6 ist ein Protokoll, dass von der IETF entwickelt wurde, welches es ermöglicht eine feste IPv6 Adresse einem mobilen Endgerät zuzuweisen und diese auch bei einem Netzwechsel zu behalten. Da das Mobile IPv6 Protokoll einen anderen Header verwendet als das Standard IPv6 Protokoll, werden in Abschnitt \ref{subsection_Mobility_Header} der \textbf{Mobility Header, Routing Header Type 2} sowie dessen Funktionen und Einsatzbereiche beschrieben.  
+Im Folgenden wird auf die theoretische Funktionsweise von \textbf{Mobile IPv6} eingegangen, sowie der Unterschied zwischen den Versionen Mobile IPv4 und IPv6 betrachtet. Die für das Verständnis von Mobile IPv6 wichtigen Begriffe werden im Abschnitt \ref{subsection_Begriffserklaerung_MobileIPV6} erklärt\cite{RFC_Mobile_IPv6}. 
+
+\section{Begriffsdefinition}
 \label{subsection_Begriffserklaerung_MobileIPV6}
 
 \subsection*{Home Adresse}
@@ -68,7 +67,7 @@ Damit ein Corresponding Node weiss, dass ein Absender berechtigt ist das Binding
 \subsection*{Proxy Neighbor Discovery}
 Damit ein Home Agent am Home Link alle an den mobile Node adressierten Pakete abfangen kann, muss er sich als dieser ausgeben. Daher schickt er im Namen des mobile Nodes ein \textit{Neighbor Advertisement} an die \textit{All-Nodes Multicast Adresse}. Nun werden alle Pakete die für den mobile Node bestimmt sind an den Home Agent gesendet. Dadurch agiert der Home Agent am Link sozusagen als Proxy für den mobile Node\cite{Securing_Neighbor_Discovery_Proxy}.
 
-\subsection{Mobility Header}
+\section{Mobility Header}
 \label{subsection_Mobility_Header}
 Für das \textit{Mobile IPv6 Protokoll} wurde ein extra \textit{Mobility Header} eingeführt. Dieser ist ein \textit{Extention Header}, der von \textit{Correspondig Nodes, mobilen Knoten} und \textit{Home Agents} genutzt wird. Er kommt in allen Nachrichten, die mit dem Herstellen und Verwalten von Bindings zu tun haben vor.\\
 Das Format des Mobility Headers ist in Abbildung \ref{Abb_Format_Mobility_Header} dargestellt\cite{RFC_Mobile_IPv6}.
@@ -155,11 +154,12 @@ cll
 \end{table}
 \label{Tabelle_Mobility_Nachrichtentypen}
 
-\subsubsection{Home Address Option}
+\subsection{Home Address Option}
+\label{subsection_Home_Address_Option}
 Wird \textit{Home Address Option} verwendet, so steht im Extension Header der Wert \textbf{60} für \textit{Next Header Value}. Sie wird verwendet, wenn ein mobile Node ein Paket sendet und sich nicht in seinem Heimnetz befindet, um dem Empfänger die Home Adresse des mobile Node mitzuteilen\cite{RFC_Mobile_IPv6}.
 
-\subsection{Routing Header Type 2}
-
+\section{Routing Header Type 2}
+\label{section_Routing_Header_Type_2}
 Für Mobile IPv6 wurde ein neuer Routing Header definiert, der als \textit{Routing Header Type 2} bezeichnet wird. Dieser erlaubt es Pakete direkt von einen CN an die CoA eines mobile Node´s zu senden. Dazu wird im IPv6 \textit{Destination address Feld} die CoA des mobile Node´s eigetragen. Sobald das Paket an der CoA ankommt, erhält der mobile Node seine HoA aus dem Routing Header, welche die Endziel Adresse des Paketes darstellt. 
 
 \begin{figure}[!h] 
@@ -169,15 +169,15 @@ Für Mobile IPv6 wurde ein neuer Routing Header definiert, der als \textit{Routin
   \label{Abb_Format_Routing_Header_Type_2}
 \end{figure}
 
-Wie in Abbildung \ref{Abb_Format_Routing_Header_Type_2} ersichtlich ist, steht im \textit{Hdr Ext Len } Feld eine 2, was bedeutet, dass der Header immer die gleiche Länge besitzt. Das \textit{Routing} Feld besitzt immer den Type 2, da es sich um den \textit{Routing Header Type 2} handelt. Im \textit{Segments Left} Feld steht immer eine 1, da nur ein Adresseintrag erlaubt ist.
+Wie in Abbildung \ref{Abb_Format_Routing_Header_Type_2} ersichtlich ist, steht im \textit{Hdr Ext Len } Feld eine 2, was bedeutet, dass der Header immer die gleiche Länge besitzt. Das \textit{Routing} Feld besitzt immer den Type 2, da es sich um den \textit{Routing Header Type 2} handelt. Im \textit{Segments Left} Feld steht immer eine 1, da nur ein Adresseintrag für diesen Header erlaubt ist.
 
-\subsection{Funktionsweise}
-
+\section{Funktionsweise}
+\label{section_Funktionsweise}
 Für den Ablauf von Mobile IPv6 gibt es zwei mögliche Verfahren, einmal das \textit{Bidirectional Tunneling} und zum Anderen das \textit{Route Optimization} Verfahren.
 
 
 %Bidirectional Tunneling
-\subsection*{Bidirectional Tunneling}
+\subsection{Bidirectional Tunneling}
 
 Beim Bidirectional Tunneling sind der mobile Knoten und der Home Agent über einen Tunnel miteinander verbunden. Pakete die von einem Correspondent Node an einen mobil Node gesendet werden, passieren vor der Zustellung den entsprechenden Home Agent des Mobile Nodes. Alle Pakete die an den mobile Node addressiert sind werden durch den Home Agent abgefangen. Dies geschieht durch \textit{Proxy Neighbor Discovery}. Wenn sich der mobile Node nicht im Heimnetz aufhält, werden die vom CN an ihm gesendeten Pakete vom HA verpackt. Alle erkannten Pakete werden an die beim Home Agent in ein neues Paket verpackt, an die registrierte CoA des mobile Node adressiert und über den Tunnel gesendet. Am anderen Ende werden die Pakete vom Netzwerk Layer des MN entpackt bevor diese an die oberen Layer weitergegeben werden.\\
 Ähnlich läuft es ab wenn der MN Pakete sendet. Hier werden den verpackten Paketen 40\,Byte als Tunnel Header hinzugefügt und unter Verwendung der CoA des MN an den HA über den Tunnel gesendet. Dies wird als \textit{reverse tunneling} bezeichnet. Beim HA werden die Pakete entpackt, der Tunnel Header entfernt und die modifizierten Pakete durch das Internet an den entsprechenden CN gesendet. In Abbildung \ref{Abb_Bidirectional_Tunneling} ist der Ablauf grafisch dargestellt.\cite{Packet_Overhead}
@@ -185,32 +185,35 @@ Beim Bidirectional Tunneling sind der mobile Knoten und der Home Agent über eine
 %Grafik Bidirectional Tunneling 
 \begin{figure}[!h] 
   \centering
-     \includegraphics[scale=0.7]{BilderTheoretischerTeil/Bidirectional_Tunnel.png}
+     \includegraphics[scale=0.8]{BilderTheoretischerTeil/Bidirectional_Tunnel.png}
   \caption{Bidirectional Tunneling}
   \label{Abb_Bidirectional_Tunneling}
 \end{figure}
 
 %Route Optimization
-\subsection*{Route Optimization}
+\subsection{Route Optimization}
 
 Bei dem \textit{Route Optimization} Verfahren, können Pakete direkt zwischen einem CN und einem MN gesendet werden. Die \textit{Binding Update Messages} (BU) werden nicht nur an den HA geschickt, sondern auch an alle beteiligten CNs. Der Zweck ist das Binden der momentanen Adresse des MN an seine HoA. Jeder CN besitzt eine sogenannte \textit{Binding Cache} Tabelle um von einem MN die CoA zu dessen HoA zuordnen zu können. Ein MN besitzt eine ähnliche Tabelle um feststellen zu können ob ein CN \textit{Bidirectional Tunneling} oder \textit{Route Optimization} verwendet. Daher ist es wichtig, BUs in regelmäßigen Abständen zu senden um eine korrekte Zuordnung von CoA zu HoA sicherzustellen. Sendet ein MN ein Paket an einen CN, so benutzt das \textit{Route Optimization} Verfahren die \textit{Home Adress Option} Header Erweiterung. Sendet allerdings ein CN ein Paket an einen MN wird der sogenannte \textit{Type 2 Routing Header} verwendet. Bei Route Optimization, kann im Vergleich zum Bidirectional Tunneling das Delay verringert werden, da kein extra Tunnel Header notwendig ist.\\In Abbildung \ref{Abb_Route_Optimization} ist das Verfahren nocheinmal grafisch dargestellt.
 
 %Grafik Route Optimization 
 \begin{figure}[h!] 
   \centering
-     \includegraphics[scale=0.7]{BilderTheoretischerTeil/Route_Optimization.png}
+     \includegraphics[scale=0.8]{BilderTheoretischerTeil/Route_Optimization.png}
   \caption{Route Optimization}
   \label{Abb_Route_Optimization}
 \end{figure}
 
 Route Optimization unterstützt auch ein Szenario, wenn MN und CN beides mobile Nodes sind. Da hier beide Nodes eine CoA und HoA besitzten, benötigt das Routing der Pakete auch beide Extention Headers. Da jeder Extention Header eine Größe von \textbf{24\,Byte} hat ergibt sich ein gesamter Overhead für das Senden von Paketen zwischen zwei mobile Nodes von \textbf{48\,Byte}\cite{Packet_Overhead}.
-%\section{Vergleich Mobile IPv4 zu Mobile IPv6}
 
+\section{Vergleich Mobile IPv4 zu Mobile IPv6}
+\label{section_Vergleich_IPv4_IPv6}
 
+Um einen Vergleich zwischen Mobile IPv4 und IPv6 zu ziehen, wird zuerst noch einmal kurz auf die Funktionsweise/Ablauf bei Mobile IPv4 eingegangen. Das in Abbildung \ref{Abb_IPv4_Szenario} dargestellte Szenario, soll die Unterschiede zwischen beiden Versionen verdeutlichen, sowie die Vor- bzw. Nachteile der einzelnen Versionen aufzeigen.\newpage
 
-
-
-
-
-
-
+%Grafik Route Optimization 
+\begin{figure}[h!] 
+  \centering
+     \includegraphics[scale=1]{BilderTheoretischerTeil/Mobile_IPv4_Szenario.png}
+  \caption{Mobile IPv4 Szenario}
+  \label{Abb_IPv4_Szenario}
+\end{figure}
