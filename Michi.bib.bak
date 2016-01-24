@@ -1,5 +1,15 @@
 % Encoding: UTF-8
 
+@Article{Packet_Overhead,
+  author =  {Hooshiar Zolfagharnasab},
+  title =   {Reducing Packet Overhead in Mobile IPv6},
+  journal = {International Journal of Distributed and Parallel Systems (IJDPS)},
+  year =    {2012},
+  volume =  {3},
+  number =  {3},
+  month =   {May}
+}
+
 @TechReport{RFC_Mobile_IPv6,
   author =      {C. Perkins and Ed. Tellabs and D. Johnson},
   title =       {Mobility Support in IPv6},
@@ -10,14 +20,14 @@
   month =       {July}
 }
 
-@Article{,
-  author =  {Hooshiar Zolfagharnasab},
-  title =   {Reducing Packet Overhead in Mobile IPv6},
-  journal = {International Journal of Distributed and Parallel Systems (IJDPS)},
-  year =    {2012},
-  volume =  {3},
-  number =  {3},
-  month =   {May}
+@TechReport{Securing_Neighbor_Discovery_Proxy,
+  author =      {J-M. Combes and S. Krishnan and G. Daley},
+  title =       {Securing Neighbor Discovery Proxy},
+  institution = {Internet Engineering Task Force (IETF)},
+  year =        {2010},
+  type =        {Request for Comments},
+  number =      {5909},
+  month =       {July}
 }% This file was created with JabRef 2.11.1.
 % Encoding: UTF8
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.12.7)  23 JAN 2016 22:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.12.7)  24 JAN 2016 19:33
 entering extended mode
 **BAC1.tex
 (BAC1.tex
@@ -1142,7 +1142,7 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 326.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) (Titelblatt.tex
-<BilderAllgemein/Logo.pdf, id=55, 273.14847pt x 102.43068pt>
+<BilderAllgemein/Logo.pdf, id=59, 273.14847pt x 102.43068pt>
 File: BilderAllgemein/Logo.pdf Graphic file (type pdf)
 
 <use BilderAllgemein/Logo.pdf>
@@ -1331,73 +1331,125 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 29.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 46.
 [2
 
 
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 66.
+(babel)             in language  on input line 68.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 66.
+(babel)             in language  on input line 68.
  [3]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 71.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 71.
 
-<BilderTheoretischerTeil/FormatMobilityHeader.png, id=155, 574.39594pt x 204.01
+<BilderTheoretischerTeil/FormatMobilityHeader.png, id=166, 574.39594pt x 204.01
 219pt>
 File: BilderTheoretischerTeil/FormatMobilityHeader.png Graphic file (type png)
  <use BilderTheoretischerTeil/FormatMobilityHeader.png>
 Package pdftex.def Info: BilderTheoretischerTeil/FormatMobilityHeader.png used 
-on input line 75.
+on input line 78.
 (pdftex.def)             Requested size: 459.51736pt x 163.20996pt.
 
-Overfull \hbox (18.49963pt too wide) in paragraph at lines 75--76
+Overfull \hbox (18.49963pt too wide) in paragraph at lines 78--79
  [][] 
  []
 
 
-Overfull \hbox (15.98839pt too wide) in paragraph at lines 85--106
+Overfull \hbox (15.98839pt too wide) in paragraph at lines 88--109
  [][] 
  []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 109.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 109.
+(babel)             in language  on input line 112.
 [4 <./BilderTheoretischerTeil/FormatMobilityHeader.png>]
-Overfull \hbox (32.61647pt too wide) in paragraph at lines 116--150
+Overfull \hbox (32.61647pt too wide) in paragraph at lines 120--154
 [][] 
  []
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 155.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 155.
-[5]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 156.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 156.
 
-<BilderTheoretischerTeil/Bidirectional_Tunnel.png, id=169, 545.03625pt x 412.54
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 161.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 161.
+
+<BilderTheoretischerTeil/Routing_Header_Type_2.png, id=176, 676.77844pt x 278.5
+4062pt>
+File: BilderTheoretischerTeil/Routing_Header_Type_2.png Graphic file (type png)
+
+ <use BilderTheoretischerTeil/Routing_Header_Type_2.png>
+Package pdftex.def Info: BilderTheoretischerTeil/Routing_Header_Type_2.png used
+ on input line 167.
+(pdftex.def)             Requested size: 439.90077pt x 181.04926pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 174.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 174.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 180.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 180.
+[5]
+
+LaTeX Warning: Text page 6 contains only floats.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 180.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 180.
+[6 <./BilderTheoretischerTeil/Routing_Header_Type_2.png>]
+<BilderTheoretischerTeil/Bidirectional_Tunnel.png, id=191, 545.03625pt x 412.54
 124pt>
 File: BilderTheoretischerTeil/Bidirectional_Tunnel.png Graphic file (type png)
  <use BilderTheoretischerTeil/Bidirectional_Tunnel.png>
 Package pdftex.def Info: BilderTheoretischerTeil/Bidirectional_Tunnel.png used 
-on input line 165.
-(pdftex.def)             Requested size: 272.51746pt x 206.27011pt.
-)
+on input line 188.
+(pdftex.def)             Requested size: 381.52278pt x 288.7769pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<BilderTheoretischerTeil/Route_Optimization.png, id=193, 548.0475pt x 418.56375
+pt>
+File: BilderTheoretischerTeil/Route_Optimization.png Graphic file (type png)
+ <use BilderTheoretischerTeil/Route_Optimization.png>
+Package pdftex.def Info: BilderTheoretischerTeil/Route_Optimization.png used on
+ input line 201.
+(pdftex.def)             Requested size: 383.63063pt x 292.99261pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 204.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 204.
+ [7]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 208.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 208.
+ [8 <./BilderTheoretischerTeil/Bidirectional_Tunnel.png> <./BilderTheoretischer
+Teil/Route_Optimization.png>])
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 398.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 398.
- [6 <./BilderTheoretischerTeil/Bidirectional_Tunnel.png>]
+ [9]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 411.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1407,11 +1459,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 430.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 430.
- [7
+ [10
 
 
 ]
-<BilderAllgemein/leer.jpg, id=182, 120.45pt x 120.45pt>
+<BilderAllgemein/leer.jpg, id=216, 120.45pt x 120.45pt>
 File: BilderAllgemein/leer.jpg Graphic file (type jpg)
 
 <use BilderAllgemein/leer.jpg>
@@ -1423,7 +1475,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 439.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 439.
- [8 <./BilderAllgemein/leer.jpg>]
+ [11 <./BilderAllgemein/leer.jpg>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
  (BAC1.aux
 (Titelblatt.aux) (Danksagung.aux) (Abstract.aux) (Einleitung.aux)
@@ -1431,7 +1483,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
 Package rerunfilecheck Info: File `BAC1.out' has not changed.
-(rerunfilecheck)             Checksum: 792BDDFA7D88B5B8F9355955A540CDBB;806.
+(rerunfilecheck)             Checksum: 01895E237D717C60F07DF5F976D4B93A;878.
 
 
 LaTeX Warning: There were undefined references.
@@ -1439,21 +1491,21 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 439.
  ) 
 Here is how much of TeX's memory you used:
- 22709 strings out of 493673
- 405696 string characters out of 3143931
- 475848 words of memory out of 3000000
- 25597 multiletter control sequences out of 15000+200000
+ 22734 strings out of 493673
+ 406521 string characters out of 3143931
+ 480848 words of memory out of 3000000
+ 25613 multiletter control sequences out of 15000+200000
  30548 words of font info for 79 fonts, out of 3000000 for 9000
  1041 hyphenation exceptions out of 8191
- 42i,12n,48p,10376b,797s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,12n,43p,10376b,803s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
 palatino/uplb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on BAC1.pdf (17 pages, 299928 bytes).
+Output written on BAC1.pdf (20 pages, 341331 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
