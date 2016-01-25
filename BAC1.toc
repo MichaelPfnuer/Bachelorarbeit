@@ -15,4 +15,5 @@
 \contentsline {subsection}{\numberline {2.4.1}Bidirectional Tunneling}{6}{subsection.19}
 \contentsline {subsection}{\numberline {2.4.2}Route Optimization}{7}{subsection.21}
 \contentsline {section}{\numberline {2.5}Vergleich Mobile IPv4 zu Mobile IPv6}{8}{section.23}
-\contentsline {chapter}{Literaturverzeichnis}{10}{figure.caption.24}
+\contentsline {subsection}{\numberline {2.5.1}Funktionsweise Mobile IPv4}{9}{subsection.25}
+\contentsline {chapter}{Literaturverzeichnis}{10}{subsection.25}

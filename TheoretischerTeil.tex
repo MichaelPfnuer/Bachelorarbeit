@@ -169,7 +169,7 @@ Für Mobile IPv6 wurde ein neuer Routing Header definiert, der als \textit{Routin
   \label{Abb_Format_Routing_Header_Type_2}
 \end{figure}
 
-Wie in Abbildung \ref{Abb_Format_Routing_Header_Type_2} ersichtlich ist, steht im \textit{Hdr Ext Len } Feld eine 2, was bedeutet, dass der Header immer die gleiche Länge besitzt. Das \textit{Routing} Feld besitzt immer den Type 2, da es sich um den \textit{Routing Header Type 2} handelt. Im \textit{Segments Left} Feld steht immer eine 1, da nur ein Adresseintrag für diesen Header erlaubt ist.
+Wie in Abbildung \ref{Abb_Format_Routing_Header_Type_2} ersichtlich ist, steht im \textit{Hdr Ext Len } Feld eine 2, was bedeutet, dass der Header immer die gleiche Länge besitzt. Das \textit{Routing} Feld besitzt immer den Type 2, da es sich um den \textit{Routing Header Type 2} handelt. Im \textit{Segments Left} Feld steht immer eine 1, da nur ein Adresseintrag für diesen Header erlaubt ist\cite{RFC_Mobile_IPv6}.
 
 \section{Funktionsweise}
 \label{section_Funktionsweise}
@@ -217,3 +217,7 @@ Um einen Vergleich zwischen Mobile IPv4 und IPv6 zu ziehen, wird zuerst noch ein
   \caption{Mobile IPv4 Szenario}
   \label{Abb_IPv4_Szenario}
 \end{figure}
+
+\subsection{Funktionsweise Mobile IPv4}
+Hält sich der MN im Heimnetz auf, so teilt er seinem HA seine HoA mit. Wenn der MN jetzt in ein fremdes Netz (Foreign network) wie in Abbildung \ref{Abb_IPv4_Szenario} dargestellt wechselt, meldet er sich beim Foreign Agent an. Dieser weist ihm ein CoA zu unter der der MN im fremden Netz erreichbar ist. Sendet jetzt ein CN ein Paket an einen MN der sich in einem fremden Netz befindet, so geht diese Paket zuerst an den Home Agent des MN. Dieser verpackt das Paket und sendet es an den Foreign Agent in dessen Netz sich der MN befindet. Über den Foreign Agent wird das Paket an den MN weitergeleitet.\\
+Sendet der MN ein Paket, so wird dieses über den Foreign Agent direkt an den CN gesendet. 
