@@ -10,10 +10,11 @@
 \contentsline {section}{\numberline {2.1}Begriffsdefinition}{2}{section.10}
 \contentsline {section}{\numberline {2.2}Mobility Header}{4}{section.11}
 \contentsline {subsection}{\numberline {2.2.1}Home Address Option}{5}{subsection.15}
-\contentsline {section}{\numberline {2.3}Routing Header Type 2}{5}{section.16}
+\contentsline {section}{\numberline {2.3}Routing Header Type 2}{6}{section.16}
 \contentsline {section}{\numberline {2.4}Funktionsweise}{6}{section.18}
 \contentsline {subsection}{\numberline {2.4.1}Bidirectional Tunneling}{6}{subsection.19}
 \contentsline {subsection}{\numberline {2.4.2}Route Optimization}{7}{subsection.21}
 \contentsline {section}{\numberline {2.5}Vergleich Mobile IPv4 zu Mobile IPv6}{8}{section.23}
 \contentsline {subsection}{\numberline {2.5.1}Funktionsweise Mobile IPv4}{9}{subsection.25}
-\contentsline {chapter}{Literaturverzeichnis}{10}{subsection.25}
+\contentsline {subsection}{\numberline {2.5.2}Unterschiede}{9}{subsection.26}
+\contentsline {chapter}{Literaturverzeichnis}{11}{table.caption.27}

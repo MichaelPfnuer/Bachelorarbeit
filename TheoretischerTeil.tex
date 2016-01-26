@@ -69,12 +69,12 @@ Damit ein Home Agent am Home Link alle an den mobile Node adressierten Pakete ab
 
 \section{Mobility Header}
 \label{subsection_Mobility_Header}
-Für das \textit{Mobile IPv6 Protokoll} wurde ein extra \textit{Mobility Header} eingeführt. Dieser ist ein \textit{Extention Header}, der von \textit{Correspondig Nodes, mobilen Knoten} und \textit{Home Agents} genutzt wird. Er kommt in allen Nachrichten, die mit dem Herstellen und Verwalten von Bindings zu tun haben vor.\\
+Für das \textit{Mobile IPv6 Protokoll} wurde ein extra \textit{Mobility Header} eingeführt. Dieser ist ein \textit{Extention Header}, der von \textit{Correspondig Nodes, mobilen Knoten} und \textit{Home Agents} genutzt wird. Er kommt in allen Nachrichten, die mit dem Herstellen und Verwalten von Bindings zu tun haben vor.
 Das Format des Mobility Headers ist in Abbildung \ref{Abb_Format_Mobility_Header} dargestellt\cite{RFC_Mobile_IPv6}.
 
 \begin{figure}[h] 
   \centering
-     \includegraphics[scale=0.8]{BilderTheoretischerTeil/FormatMobilityHeader.png}
+     \includegraphics[scale=0.78]{BilderTheoretischerTeil/FormatMobilityHeader.png}
   \caption{Format Mobility Header}
   \label{Abb_Format_Mobility_Header}
 \end{figure}
@@ -87,7 +87,7 @@ Die im Header definierten Felder haben folgende Aufgabe.
 \begin{tabular}{
 lll
 }
-
+\toprule
 \multicolumn{1}{p{3,5cm}}{\centering \textit{Feld}} & \multicolumn{1}{p{2cm}}{\centering \textit{Größe} } & \multicolumn{1}{p{6,5cm}}{\centering \textit{Beschreibung} }\\\midrule
 \textbf{Payload Proto} &1\,Byte  & Entspricht dem next Header Feld\\
 &&\\
@@ -105,13 +105,14 @@ lll
 \textbf{Data} & variabel & Enthält die Daten entsprechend des MH Type\\
 \bottomrule
 \end{tabular}
+\label{Tabelle_Mobility_Header_Felder}
 \caption{Beschreibung Mobility Header Felder}
 \end{table}
-\label{Tabelle_Mobility_Header_Felder}
+
 \newpage
 
 Im Folgenden werden die verschiedenen \textit{Mobility Nachrichtentypen} aufgezeigt um den Ablauf in einem \textit{Mobile IPv6 Szenario} richtig zu verstehen.
-
+\vspace{.5cm}
 %Tabelle Mobility Nachrichtentypen
 \begin{table}[!h]
 %\rowcolors{2}{black!10}{black!20}
@@ -119,7 +120,7 @@ Im Folgenden werden die verschiedenen \textit{Mobility Nachrichtentypen} aufgeze
 \begin{tabular}{
 cll
 }
-
+\toprule
 \multicolumn{1}{p{1.3cm}}{\centering \textit{MH Wert}} & \multicolumn{1}{p{3.9cm}}{\centering \textit{Nachricht} } & \multicolumn{1}{p{9cm}}{\centering \textit{Beschreibung} }\\\midrule
 0 & Binding Refresh  & Fordert den mobilen Knoten auf, sein Binding zu \\
 &Request &aktualisieren. Wird vom CN´s verschickt\\
@@ -150,9 +151,10 @@ cll
 &&auf Mobility zu signalisieren.\\
 \bottomrule
 \end{tabular}
+\label{Tabelle_Mobility_Nachrichtentypen}
 \caption{Mobility Nachrichtentypen}
 \end{table}
-\label{Tabelle_Mobility_Nachrichtentypen}
+
 
 \subsection{Home Address Option}
 \label{subsection_Home_Address_Option}
@@ -208,7 +210,7 @@ Route Optimization unterstützt auch ein Szenario, wenn MN und CN beides mobile N
 \section{Vergleich Mobile IPv4 zu Mobile IPv6}
 \label{section_Vergleich_IPv4_IPv6}
 
-Um einen Vergleich zwischen Mobile IPv4 und IPv6 zu ziehen, wird zuerst noch einmal kurz auf die Funktionsweise/Ablauf bei Mobile IPv4 eingegangen. Das in Abbildung \ref{Abb_IPv4_Szenario} dargestellte Szenario, soll die Unterschiede zwischen beiden Versionen verdeutlichen, sowie die Vor- bzw. Nachteile der einzelnen Versionen aufzeigen.\newpage
+Um einen Vergleich zwischen Mobile IPv4 und IPv6 zu ziehen, wird zuerst noch einmal kurz auf die Funktionsweise/Ablauf bei Mobile IPv4 eingegangen. Das in Abbildung \ref{Abb_IPv4_Szenario} dargestellte Szenario, soll die Unterschiede zwischen beiden Versionen verdeutlichen, sowie die Vor- bzw. Nachteile der einzelnen Versionen aufzeigen.
 
 %Grafik Route Optimization 
 \begin{figure}[h!] 
@@ -221,3 +223,62 @@ Um einen Vergleich zwischen Mobile IPv4 und IPv6 zu ziehen, wird zuerst noch ein
 \subsection{Funktionsweise Mobile IPv4}
 Hält sich der MN im Heimnetz auf, so teilt er seinem HA seine HoA mit. Wenn der MN jetzt in ein fremdes Netz (Foreign network) wie in Abbildung \ref{Abb_IPv4_Szenario} dargestellt wechselt, meldet er sich beim Foreign Agent an. Dieser weist ihm ein CoA zu unter der der MN im fremden Netz erreichbar ist. Sendet jetzt ein CN ein Paket an einen MN der sich in einem fremden Netz befindet, so geht diese Paket zuerst an den Home Agent des MN. Dieser verpackt das Paket und sendet es an den Foreign Agent in dessen Netz sich der MN befindet. Über den Foreign Agent wird das Paket an den MN weitergeleitet.\\
 Sendet der MN ein Paket, so wird dieses über den Foreign Agent direkt an den CN gesendet. 
+
+\subsection{Unterschiede}
+Betrachtet man die beiden verschiedenen Version Mobile IPv4 und Mobile IPv6 so werden einige Unterschiede ersichtlich. Diese werden nachfolgend stichpunktartig aufgeführt\cite{Vergleich_IPv4_IPv6}.
+\begin{itemize}
+
+\item Bei \textit{Mobile IPv6} wird der Overhead im Vergleich zu Mobile IPv4 reduziert, da hier beim Senden eines Paketes an einen MN bevorzugt der \textit{IPv6 Routing Header} anstelle von IP encapsulation verwendet wird.
+
+\item Im Gegensatz zur Version 4 werden bei Mobile IPv6 Features wie \textit{Neighbor Discovery} oder \textit{Auto Address Configuration} verwendet, was keine speziellen Router als \textit{Foreign Agents} mehr nötig macht.
+
+\item \textit{Route Optimization} ist ein fester Bestandteil in Mobile IPv6 und nicht eine Erweiterung (die nicht von allen Nodes unterstützt wird) wie in Mobile IPv4. Daraus ergibt sich die Möglichkeit, das ein CN ein Paket direkt an einen MN schickt, wodurch der Nachteil des \textit{triangle routing} von IPv4 beseitigt wird.
+
+\item Der HA bei Mobile IPv6 verwendet \textit{neighbor discovery} anstelle von \textit{ARP} wie es in Mobile IPv4 der Fall ist, um Pakete abzufangen die an den MN adressiert sind.
+
+\item Bei Mobile IPv6 stellt es kein Problem mehr da, wenn Router in einem fremden Netz \textit{ingress filtering} verwenden, da der MN nun seine \textit{Care-of Adresse} im IP Header des Paketes verwendet.
+
+\item Mobile IPv6 verwendet \textit{IPsec} für Binding Updates anstelle von eigenen Sicherheitsmechanismen wie es bei IPv4 der Fall ist.
+ 
+\end{itemize}
+
+In der nachfolgenden Tabelle \ref{Tabelle_Unterschiede_IPv4_IPv6} werden die wichtigsten Unterschiede noch einmal kurz dargestellt.
+
+%Tabelle Mobility Nachrichtentypen
+\begin{table}[!h]
+%\rowcolors{2}{black!10}{black!20}
+
+\begin{tabular}{
+lll
+}
+\toprule
+
+\multicolumn{1}{p{6cm}}{\centering \textit{}} & \multicolumn{1}{p{4cm}}{\textit{Mobile IPv4} } & \multicolumn{1}{p{4cm}}{\textit{Mobile IPv6} }\\\midrule
+
+\textbf{Foreign Agent} & \checkmark & x\\
+
+&&\\
+
+\textbf{Route Optimization} & Erweiterung & \checkmark\\
+
+&&\\
+
+\textbf{Paketidentifizierung} & ARP & Neighbor Discovery\\
+\textbf{durch den HA}&&\\
+
+&&\\
+
+\textbf{Probleme mit}& \checkmark & x \\
+\textbf{ingress filtering}&&\\
+
+&&\\
+
+\textbf{Sicherung der} & eigene & IPsec\\
+\textbf{Binding Updates}& Mechanismen&\\
+\bottomrule
+\end{tabular}
+\caption{Unterschiede Mobile IPv4 / Mobile IPv6}
+\label{Tabelle_Unterschiede_IPv4_IPv6}
+\end{table}
+
+Wie aus dem Vergleich zwischen \textit{Mobile IPv4} und \textit{Mobile IPv6} ersichtlich wird, wurde versucht die Schwächen, die bei der Version\,4 vorhanden waren in der Version\,6 zu beheben. Einer der wichtigsten Punkte hierbei, war die Sicherung der Binding Updates sowie die Verringerung des Overheads. 
