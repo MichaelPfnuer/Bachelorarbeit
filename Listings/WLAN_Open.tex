@@ -1,0 +1,25 @@
+
+Dot11 ssid BAC1
+Vlan 1
+authentication open
+Mbssid Guest-mode
+!
+Dot11 ssid BAC2
+Vlan 2
+authentication open
+Mbssid Guest-mode
+!
+Int dot11 0/1/0
+no shutdown
+Mbssid 
+ssid BAC1
+ssid BAC2
+!
+configure terminal
+interface Dot11Radio 0/1/0.1
+encapsulation dot1Q 1 native
+!
+interface Dot11Radio 0/1/0.2
+encapsulation dot1Q 2 native
+
+

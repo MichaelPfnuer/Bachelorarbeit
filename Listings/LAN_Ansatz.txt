@@ -1,0 +1,17 @@
+ISP2(config)# interface fa 0/0
+!
+ISP2(config-if)# ipv6 mobile home-agent
+ISP2(config-if)# ipv6 nd prefix 2001:DB8:ACAD:1:3000::/68 1000 900
+ISP2(config-if)# ipv6 nd advertisement-interval
+ISP2(config-if)# ipv6 nd ra interval 201
+ISP2(config-if)# ipv6 mobile home-agent preference 10
+ISP2(config-if)# ipv6 mobile home-agent
+!
+ISP2(config)# ipv6 mobile home-agent
+!
+ISP2(config-ha)# binding access list1
+!
+ISP2(config)# ipv6 access-list list1
+!
+ISP2(config-ipv6-acl)# permit icmp any any
+

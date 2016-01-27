@@ -1,0 +1,44 @@
+ISP2(config)# interface fa 0/0              
+!
+ISP2(config-if)# ipv6 mobile home-agent
+!
+ISP2(config-if)# exit
+!
+ISP2(config)# ipv6 access-list list1              
+!
+ISP2(config-ipv6-acl)# permit icmp any any
+!
+ISP2(config-if)# exit
+!
+ISP2(config)# ipv6 mobile home-agent              
+!
+ISP2(config-ha)# binding access list1 open 2000 15 20
+!
+MobileRouter(config)# ipv6 mobile router
+!
+MobileRouter(IPv6-mobile-router)# eui-interface fa 0/1
+!
+MobileRouter(IPv6-mobile-router)# home-network
+!
+MobileRouter(IPv6-mobile-router)# home-address home-network
+                                  eui-64
+!
+MobileRouter(IPv6-mobile-router)# explicit-prefix
+!
+MobileRouter(IPv6-mobile-router)# register lifetime 600
+!
+MobileRouter(IPv6-mobile-router)# exit
+!
+MobileRouter(config)# interface fa 0/1
+!
+MobileRouter(config-if)# ipv6 nd advertisement-interval
+!
+MobileRouter(config-if)# ipv6 nd ra interval msec 200
+!
+MobileRouter(config-if)# ipv6 nd prefix 2001:DB8::/35
+!
+MobileRouter(config-if)# ipv6 mobile router-service roam
+!
+ISP2(config)# ipv6 router nemo
+!
+ISP2(config-rtr)# distance 10

@@ -24,7 +24,7 @@ a4paper,
 german,
 %twoside,
 openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, nicht bei article)
-12pt                         % ersatzweise 12pt, wenn mehr Seiten entstehen sollen
+12pt                          % ersatzweise 12pt, wenn mehr Seiten entstehen sollen
 ]
 {report}
 
@@ -33,8 +33,7 @@ openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, n
 \usepackage[latin1]{inputenc} % Zeichensatz, ermöglicht die direkte Eingabe von Umlauten im Editor
 \usepackage[pdftex]{graphicx} % Einbindung von Grafiken (pdf, png, jpg)
 \usepackage{float}            % bietet Option [H] für bombenfestes Verankern
-\usepackage[ngerman]{babel} 
-\usepackage[table]{xcolor}  % Silbentrennung nach der neuen deutschen Rechtschreibung, z.B.: Sys-tem
+\usepackage[ngerman]{babel}   % Silbentrennung nach der neuen deutschen Rechtschreibung, z.B.: Sys-tem
 \usepackage{amstext}          % für Klartext via \text{} in Formeln
 \usepackage{amsfonts}         % für komplexere Formeln (Mengensymbole ...)
 \usepackage{amssymb}          % für komplexere Formeln (Mengensymbole ...)
@@ -50,16 +49,11 @@ openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, n
 \usepackage{pdfpages}         % für die Einbindung kompletter pdf-*Seiten*
 \usepackage{parskip}          % zw. Absätzen: eine knappe Leerzeile statt hängender Einzüge
 \usepackage[right]{eurosym}   % Eurosymbol
-\usepackage{xcolor}           % farbiger Text
+\usepackage{xcolor}          % farbiger Text
 \usepackage[hyphens]{url}     % für \url{http://www}, Option hyp erlaubt auch Umbruch nach "-"
 \usepackage{makeidx}          % Package zur Indexerstellung
 \usepackage{multicol}         % zur Indexerstellung in zwei Spalten
 \usepackage[numbers, square]{natbib}   % Für \setlength{\bibsep}{3mm}; square macht eckige Klammern
-\usepackage{color}
-\usepackage{siunitx}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{transparent}
 \usepackage{colortbl}
 \PassOptionsToPackage{table}{xcolor} 
 \usepackage{diagbox}
@@ -72,8 +66,58 @@ openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, n
 \usepackage{listings}
 \usepackage{color}
 
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-%%%%%%%%%%%%%%%%%%%% Zusatz neu S.Schoendorfer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{ 
+  backgroundcolor=\color{white},   
+  basicstyle=\ttfamily,       
+  breakatwhitespace=false,        
+  breaklines=true,                
+  captionpos=b,                   
+  %commentstyle=\color{mygreen},    
+  deletekeywords={...},            
+  escapeinside={\%*}{*)},          
+  extendedchars=true,             
+  frame=l,                    
+  keepspaces=true,                 
+  %keywordstyle=\color{blue},       
+  %language=Octave,                 
+  morekeywords={*,...},            
+  numbers=left,                    
+  numbersep=5pt,                   
+  numberstyle=\tiny\color{mygray}, 
+  rulecolor=\color{black},         
+  showspaces=false,                
+  showstringspaces=false,          
+  showtabs=false,                  
+  stepnumber=2,                    
+  %stringstyle=\color{mymauve},     
+  tabsize=2,                       
+  title=\lstname                  
+}
+
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {?}{{\oe}}1 {?}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {?}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%% Zusatz %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[printonlyused]{acronym}
 \usepackage[toc,page]{appendix}
 \usepackage{placeins}					% FloatBarrier
@@ -87,7 +131,7 @@ openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, n
 \usepackage{nomencl}
 \usepackage{setspace}
 \onehalfspacing
-\setcounter{secnumdepth}{5}
+
 \usepackage[plainpages=false, hypertexnames=false, pdftex]{hyperref}
                                % hyperref statt \url geht, verträgt sich allerdings nicht mit den 
                                % eingefügten / veränderten Seitenzahlen ... (die stimmen dann nicht mehr)
@@ -204,8 +248,8 @@ openright,                    % Kap.beginn immer rechts! (fkt. nur bei report, n
 \makeatletter
 \AtBeginDocument{
 	\hypersetup{
-		pdftitle = {BAC1}
-		pdfauthor = {Martin, Pnür, Zotter}
+		pdftitle = {Bachelorarbeit 1}
+		pdfauthor = {R. Martin, M. Pnür, D. Zotter}
 	}
 }
 	
@@ -348,7 +392,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \renewcommand{\TheAuthor}{}
 \pagestyle{empty}
 
-
+\pagenumbering{Roman}
 
 \pagestyle{plain}
 %\pagenumbering{roman}
@@ -358,27 +402,6 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 
 \newpage
 
-\pagenumbering{arabic}
-\renewcommand{\TheAuthor}{\PfnM}
-\include{Einleitung}
-\include{TheoretischerTeil}
-\renewcommand{\TheAuthor}{\ZotD}
-\include{PraktischerTeil_Materialien_Aufbau}
-\renewcommand{\TheAuthor}{\MarR}
-\include{Analyse_&_Config}
-\include{Schlussbetrachtungen}
-
-
-
-% Erstes Literaturverzeichnis, mit BibTeX
-\renewcommand{\TheAuthor}{}
-\interlinepenalty=10000 % Literatureinträge: Absätze zusammenhalten
-%\clearpage
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}   
-\bibliography{Michi}
-\interlinepenalty=100
-\newpage
-\pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abkürzungen%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,15 +416,14 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 
 \begin{tabular}{lll}
 
-
+\textbf{CoA}&\makebox[0.6cm]{\dotfill} & Care of Address\\
 \textbf{HA}&\makebox[0.6cm]{\dotfill} & Home Agent\\
-\textbf{MN}&\makebox[0.6cm]{\dotfill} & Mobile Node\\
-\textbf{CN}&\makebox[0.6cm]{\dotfill} & Correspondent Node \\
-\textbf{CoA}&\makebox[0.6cm]{\dotfill} & Care-of Address\\
-\textbf{HoA}&\makebox[0.6cm]{\dotfill} & Home Adresse\\
 \textbf{IOS}&\makebox[0.6cm]{\dotfill} &Internetwork Operating System\\
+\textbf{MN}&\makebox[0.6cm]{\dotfill} & Mobile Node\\
 \textbf{MR}&\makebox[0.6cm]{\dotfill} & Mobile Router\\
 \textbf{NEMO}&\makebox[0.6cm]{\dotfill} &Network Mobility\\
+
+
 \end{tabular}
 
 
@@ -428,27 +450,52 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 %\listofalgorithms
 %\protect \addcontentsline{toc}{chapter}{Algorithmenverzeichnis}
 \clearpage
+\pagenumbering{arabic}
+\renewcommand{\TheAuthor}{\PfnM}
+\include{Einleitung}
+\include{TheoretischerTeil}
+\renewcommand{\TheAuthor}{\ZotD}
+\include{NEMO}
+\include{PraktischerTeil_Materialien_Aufbau}
+\renewcommand{\TheAuthor}{\MarR}
+\include{Analyse_&_Config}
+\include{Schlussbetrachtungen}
+
+
+
+% Erstes Literaturverzeichnis, mit BibTeX
+\renewcommand{\TheAuthor}{}
+\interlinepenalty=10000 % Literatureinträge: Absätze zusammenhalten
+%\clearpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}   
+\bibliography{BALiteratur}
+\interlinepenalty=100
+
 
 % Anhang je nach Wunsch
-%\begin{appendices}
+\begin{appendices}
 %\addcontentsline{toc}{chapter}{Anhang}
-%\include{Anhang_Mathematik}                 % A
-%\include{Anhang_FormatDerParameterdateien}  % B
+\addcontentsline{toc}{section}{Anhang A}
+\include{Anhang/ISP_Config}                 % A
+\addcontentsline{toc}{section}{Anhang B}
+\include{Anhang/Anhang_WLAN}
+\addcontentsline{toc}{section}{Anhang C}
+\include{Anhang/MobileRouter_Grund}    				% B
 %\include{Anhang_Quelltexte}                 % C
 %\include{Anhang_Datenblaetter}              % D
 %\include{Anhang_Glossar}                    % E
 %\include{Verfasser-Einzelabschnitte}
-%\end{appendices}
+\end{appendices}
 
 
 % Schmutzblatt (leere Seite am Ende)
 
-%\newpage                                    
-%\pagestyle{empty}
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=0.9\textwidth]{BilderAllgemein/leer.jpg}
-%\end{figure}
+\newpage                                    
+\pagestyle{empty}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{BilderAllgemein/leer.jpg}
+\end{figure}
 
 
 

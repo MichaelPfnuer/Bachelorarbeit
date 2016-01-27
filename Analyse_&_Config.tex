@@ -1,4 +1,300 @@
-\section{Analyse der Hardware und Software}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% FACHHOCHSCHULE SALZBURG GMBH
+%% Informationstechnik und System-Management
+%%
+%% Salzburg University of Applied Sciences
+%% Information Technologies and Systems Management
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Bachelor Thesis 1
+%% Aufbau eines Mobile IPv6 Szenarios im Netzwerklabor
+%% LaTeX template
+%%
+%% Analyse der Hardware und Software & Konfiguration der Geräte
+%%
+%% Riccardo Martin, Michael Pfnür, Daniel Zotter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ö
-\section{Implementation der Konfiguration}
+
+\section{Analyse der Hardware und Software}
+Um den Aufbau des Mobile IPv6 Szenarios im Netzwerklabor durchführen zu können, musste zuerst die benötigte Hardware und die erforderliche Software ermittelt werden.
+
+Die erste Überlegung für den Aufbau des Szenarios war, den Wechsel zwischen den Netzwerken mittels WLAN zu ermöglichen. Dazu wird ein Wireless Access Point benötigt, dieser sollte durch einen Router mit einem WLAN Interface repräsentiert werden.
+
+Als Router stand ein Cisco 1841 Integrated Services Router zur Verfügung. Der Cisco 1841 Router hat die Möglichkeit verschiedene Interfaces über mehrere Steckplätze aufzunehmen. Ein Steckplatz wurde verwendet um das WLAN Interface einzusetzen. Die Idee war es über dieses WLAN Interface zwei Netzwerke mit verschiedenen Netzwerknamen (SSID) auszustrahlen. Der mögliche Aufbau dieses Szenarios kann der Abbildung (...WLAN-Top) entnommen werden.
+
+\subsection{Analyse des WLAN Interfaces}
+Um den Service des mobilen IPv6 zu implementieren, muss dieses Interface die Konfiguration eines Home Agents unterstützen. Die Überprüfung des Interfaces auf diese Fähigkeit ergab, dass die benötigten Konfigurationsschritte nicht unterstützt werden. Nach ausgiebiger Recherche, unter anderem mit Rücksprache mit dem Hersteller Cisco, musste festgestellt werden, dass die Hardware die Technologie des mobilen IPv6 noch nicht unterstützt. Somit musste die Idee, den Netzwechsel mit Wireless Netzen zu simulieren, durch eine Alternativlösung ersetzt werden.\\
+Die Alternative war schnell gefunden, man kann den Netzwechsel auch durch manuelles Stecken der Netzwerkkabel auf verschiedene Interfaces des Routers simulieren. Dabei stellt jedes Interface ein anderes Netzwerk da. Dieses Szenario wir in Punkt (..LAN) ausführlich beschrieben.
+
+\subsection{Analyse des Routers}
+Des Weiteren muss der Router die Mobile IPv6 Konfiguration unterstützen. Diese Konfiguration benötigt die Implementierung eines Home-Agents auf einem Interface des Routers, die Aktivierung des mobilen Routers und die Aktivierung des NEMO Dienstes.\\
+Um die benötigten Dienste zu aktivieren, bedarf es einer richtigen Version des Betriebssystems (IOS) auf den Cisco Routern.\\
+Unter Berücksichtigung der geforderten Services musste eine Recherche angestellt werden, um die korrekte IOS Version zu ermitteln. Nach dem Vergleich der verschiedenen Features der IOS Versionen konnte das passende Betriebssystem eruiert werden.\\
+
+\subsection{Auswahl des IOS}
+Bei der Suche nach der passenden Software wurde davon ausgegangen, dass das aktuellste IOS alle benötigten Eigenschaften besitzt. Dies erwies sich jedoch als Trugschluss. Man muss das Betriebssystem nach den geforderten Eigenschaften auswählen. Es wurden zwei Versionen in Betracht gezogen, zum einen die aktuelle IOS Version \textit{c1841-advipservicesk9-mz.151-4.M10} und zum anderen die Version \textit{c1841-adventerprisek9-mz.124-22.YB6}.\\ 
+
+\subsubsection*{Gegenüberstellung der beiden IOS Versionen:}
+
+\begin{table}[!h]
+\centering
+ \setlength{\tabcolsep}{8mm}
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\diagbox{\textbf{\textit{Service:}}}{\textbf{\textit{Release:}}} & 15.1(4) & 12.4(22)\\ 
+\midrule
+\rowcolor {black!10} \textbf{IPv6} & $\surd$ & $\surd$\\
+\rowcolor {black!20} \textbf{Mobile IPv6} & $\surd$ & $\surd$\\
+\rowcolor {black!10} \textbf{IPv6 Home-Agent} & $\surd$ & $\surd$\\
+\rowcolor {black!20} \textbf{IPv6 Mobile-Router} & $\times$ & $\surd$\\
+\rowcolor {black!10} \textbf{NEMO} & $\times$ & $\surd$ \\
+\bottomrule
+\end{tabular}
+\caption{Gegenüberstellung zweier IOS Versionen}
+\label{IOS_Table}
+\end{table}
+
+Nach intensiver Erarbeitung der erforderlichen Eigenschaften fiel die Wahl, mit Hilfe der Tabelle \ref{IOS_Table},auf die
+IOS Version \textit{c1841-adventerprisek9-mz.124-22.YB6}. Die Dienste \textit{Mobile-Router} und \textit{NEMO} sind für die Ausarbeitung des Szenarios dieser Arbeit essentiell und müssen gegeben sein. Der Gedanke hinter der Technologie \textit{NEMO} wird im Abschnitt \ref{nemo} detailliert erläutert.     
+
+\subsection{Analyse der Endgeräte}
+Die Endgeräte in einer Mobile IPv6 Umgebung müssen IPv6 fähig sein und zusätzlich den Dienst des mobilen IPv6 unterstützen.\\
+Mobile Knoten tauschen mit ihrem Home-Agent Informationen aus. Welche Informationen dabei ausgetauscht werden, wird in Punkt (...) beschrieben.\\   
+Beim Aufbau des Szenarios im Netzwerklabor standen Rechner mit Windows 7 zur Verfügung. Windows 7 ist IPv6 fähig, unterstützt aber den Dienst Mobile IPv6 momentan noch nicht. Unter Windows bietet den Dienst lediglich das Betriebssystem Windows Server 2003. Microsoft gibt an, dass die Technologie für andere Betriebssysteme noch nicht ausreichend ausgearbeitet wurde und somit noch nicht zu Verfügung steht\cite{microsoft}.\\
+Sollten, wie es bei dieser Arbeit vorkommt, die Endgeräte Mobile IPv6 nicht unterstützen, kann \textit{NEMO} Abhilfe verschaffen. Die Funktion von \textit{NEMO} wir im Abschnitt \ref{nemo} genauer erklärt.              
+
+\section{Implementierung}
+In diesem Abschnitt wird beschrieben, welche Konfigurationen auf den verwendeten Cisco 1841 Router vorgenommen wurden. Im laufe der praktischen Ausarbeitung kam es zu Änderungen des Grundaufbaues und somit wurden verschieden Konfigurationen durchgeführt und evaluiert. Die wesentlichen Anforderungen an die Router liegen neben den Grundvoraussetzungen, wie Routing-Protokolle und die Unterstützung von IPv6, in den Funktionalitäten, welche die Konfiguration von Mobile IPv6 ermöglichen.\\
+Die in den nachfolgenden Kapiteln beschriebenen Konfigurationsschritte wurden der Cisco Dokumentation \textit{Implementing Mobile IPv6} \citep{ciscom} entnommen.
+
+\subsection{Grundaufbau}
+\label{Grundaufbau}
+Da verschiedene Aufbauten getestet wurden, wurde ein Grundaufbau des Testnetzes erstellt. Auf diesen Grundaufbau basieren alle getesteten Szenarien. Dieser Aufbau wurde zur besseren Veranschaulichung mittels \textit{Cisco Packet Tracer} simuliert. Der nachfolgenden Grafik \ref{Grundaufbau} ist dieser Grundaufbau zu entnehmen.
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderAufbau/Grundaufbau.png}
+  \caption{Grundaufbau}
+  \label{Grundaufbau}
+\end{figure}
+    
+
+Als Routing-Protokoll für das Testnetzwerk wurde OSPFv3 konfiguriert. OSPFv3 ist ein Routing-Protokoll für IPv6 Adressen. Außerdem beinhaltet OSPFv3 die Neighbor Discovery Funktion, welche dafür zuständig ist eine Liste zu erzeugen, in der alle benachbarten Router, zu denen eine bidirektionale Verbindung besteht, aufgelistet werden.
+
+Die Adressierung der einzelnen Geräte erfolgte durch Vergabe statischer IPv6 Adressen. Es gäbe auch die Möglichkeit die IPv6 Adressen automatisch durch eine Autokonfiguration zuweisen zu lassen, dies wurde jedoch in dieser Arbeit nicht implementiert. 
+      
+In Tabelle \ref{GrundIPAdressen_Table} sind die eingerichteten  IPv6 Adressen der Router Interfaces und die zu den Hosts vergebenen IPv6 Adressen dargestellt.\\
+
+
+\begin{table}[!h]
+\centering
+ \setlength{\tabcolsep}{8mm}
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Host}& \textbf{Interface} & \textbf{IPv6 Adresse}\\ 
+\midrule
+\rowcolor {black!10} ISP & Fa0/0 & 2001:DB8:ACAD:1::1/68\\
+%\rowcolor {black!20} ISP & Fa0/1 & 2001:DB8:ACAD:1:4000::1/68\\
+\rowcolor {black!20} ISP & S0/0/0 & 2001:DB8:ACAD:1:1000:1/68\\
+%\rowcolor {black!20} ISP2 & Fa0/0 & 2001:DB8:ACAD:1:3000::1/68\\
+\rowcolor {black!10} ISP2 & Fa0/1 & 2001:DB8:ACAD:1:2000::1/68\\
+\rowcolor {black!20} ISP2 & S0/0/1 & 2001:DB8:ACAD:1:1000::2/68\\
+%\rowcolor {black!10} MobileRouter & Fa0/0 & 2001:DB8:ACAD:1:3000::2/68\\
+%\rowcolor {black!20} MobileRouter & Fa0/1 & 2001:DB8:ACAD:1:3000::3/68\\
+\rowcolor {black!10} Host A & Fa0 & 2001:DB8:ACAD:1::4/68 \\
+\rowcolor {black!20} Host B & Fa0 & 2001:DB8:ACAD:1:2000::4/68 \\
+%\rowcolor {black!10} Host C & Fa0 & 2001:DB8:ACAD:1:3000::5/68 \\
+\bottomrule
+\end{tabular}
+\caption{Für den Grundaufbau verwendete IPv6 Adressen}
+\label{GrundIPAdressen_Table}
+\end{table}
+
+Eine Auflistung der vorgenommen Grund-Konfigurationen der Router \textit{ISP} und \textit{ISP2} ist im Anhang \hyperref[A]{A} zu finden.
+
+\subsection{WLAN Ansatz}
+\label{WLAN_Ansatz}
+Um die Funktion von Mobile IPv6 zu testen, sollte einen Netzwechsel stattfindend. Dazu wurden zunächst versucht den Netzwechsel mit Hilfe von zwei WLAN Netzen zu simulieren.\\
+Der Aufbau dieses Testnetzwerks ist der Topologie (refTopWLAN) zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet. Es wurden zwei WLAN Netzwerke am Router konfiguriert. Danach sollte es dem Endgerät möglich sein sich jeweils mit einem der beiden Netze zu verbinden. Ein Netz sollte dabei als Heimnetzwerk des Endknotens dienen, das andere Netzwerk sollte ein Fremdnetz darstellen.\\
+Das WLAN Module des Cisco Routers bietet zwei Interfaces, zum einen das Interface \textit{Dot11Radio 0/0/1} und zum anderen das Interface \textit{interface Dot11Radio 0/1/0}. 
+
+Für dieses Testszenario wurde das Interface \textit{Dot11Radio 0/1/0} gewählt. Auf diesem Interface wurden zwei Subinterface erstellt. Anschließend wurde jedem VLAN ein Netzwerk mit eigenem SSID zugewiesen. Für dieses Testnetz erfolgt der Zugriff auf das Netzwerk ohne Authentifizierung.
+
+Die vorgenommene Konfiguration der beiden WLAN Netzwerke am Router \textit{ISP2} ist im Anhang \hyperref[B]{B} zu finden.  
+
+
+Das, dem Subinterface \textit{Dot11Radio 0/1/0.1} zugewiesene, Netzwerk sollte als Heimnetz dienen. Nachdem die Subinterface erfolgreich konfiguriert waren, musste der Router in den \textit{interface configuration mode} versetzt werden. In diesem Zustand wurde anschließend der mobile IPv6 Home-Agent am Interface \textit{Dot11Radio 0/1/0.1} gestartet. Die erforderliche Schritte sind dem folgendem Quellcodeausschnitt \hyperref[WLANHA]{3.1} zu entnehmen.\\      
+ 
+\lstinputlisting
+[caption={Mobile IPv6 HA am WLAN Interface}
+\label{WLANHA},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/WLAN_HA.tex}
+
+Bei dem Versuch, den IPv6 Home-Agent am Interface zu starten, trat jedoch ein Fehler auf. Es stellte sich heraus, dass die Konfiguration eines IPv6 Home-Agents auf dieser Ausführung des WLAN Moduls nicht möglich ist. Eine Konfiguration eines IPv4 Home-Agents ist hingegen möglich und könnte durch einen Tunnel auf IPv6 Adressen angepasst werden. Da sich diese Arbeit ausschließlich mit der Umsetzung unter Verwendung von IPv6 Adressen beschäftigt, war dies keine Option für das Testnetzwerk.\\
+Schlussendlich wurde der WLAN Ansatz durch eine Alternative ersetzt. Die Alternative war es, den Netzwechsel durch Stecken der Netzwerkkabel auf verschiedene Interfaces des Routers zu simulieren. Die Implementierung des neuen Testszenarios folgt im nächsten Abschnitt \ref{LAN_Ansatz}.    
+
+\subsection{LAN Ansatz}
+\label{LAN_Ansatz}
+Da der Netzwerkwechsel aufgrund technischer Diskrepanzen nicht mit WLAN Netzen simuliert werden konnte, fiel die Entscheidung auf den Ansatz den Netzwechsel durch ein LAN Netzwerk zu ermöglichen.\\
+Dabei werden an jedem Interface des Routers verschieden Netzwerke konfiguriert. Es ist dann möglich die angeschlossenen Netzwerkkabel auf ein anderes Interface und somit in ein anderes Netzwerk zu stecken.\\
+Der Aufbau dieses Testnetzwerks ist der Topologie (refTopLAN) zu entnehmen.
+
+Wie bei Punkt \ref{WLAN_Ansatz} wurde die Grundkonfiguration der Router aus Punkt \ref{Grundaufbau} übernommen. Am Router \textit{ISP2} war das Interface \textit{fa 0/0} noch nicht unter Verwendung und konnte somit als Home-Agent-Interface genutzt werden.\\
+An diesem Interface wurde der Mobile IPv6 Home-Agent Service konfiguriert, d.h. für den Mobilen Knoten stellte dieses Interface den Home-Agent dar.
+
+Auch hier musste zunächst der Mobile IPv6 Home-Agent Service am Interface initialisiert werden. Der nachfolgende Quellcodeausschnitt \hyperref[LANHA]{3.2} zeigt die dazu erforderliche Konfiguration.\\     
+  
+\lstinputlisting
+[caption={Mobile IPv6 HA am LAN Interface}
+\label{LANHA},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/LAN_HA.tex}
+
+Um das Interface erfolgreich als Mobile IPv6 Home-Agent zu initialisieren musste dem Interface eine gültige Adresse zugewiesen werden. Für dieses Testnetzwerk wurde die Vergabe von Adressen statisch gehandhabt. Die IPv6 Adresse für das Interface \textit{fa 0/0} kann der Tabelle \ref{LANHAIPAdressen_Table} entnommen werden.\\
+Des Weiteren wurde ein zusätzlicher Host in das Testszenario mitaufgenommen. Dieser repräsentiert den mobilen Knoten, welcher mit seinem Home-Agent an Interface \textit{fa 0/0} des Routers \textit{ISP2} verbunden ist.\\
+Der mobile Knoten bzw. der Host wurde dann manuell an das freie Interface \textit{fa 0/1} des Routers \textit{ISP} angeschlossen.\\
+Die beiden IPv6 Adressen des Hosts und des Interfaces \textit{fa 0/1} des Routers \textit{ISP} wurden ebenfalls statisch zugewiesen und konfiguriert und sind wiederum der Tabelle \ref{LANHAIPAdressen_Table} zu entnehmen.\\          
+
+\begin{table}[!h]
+\centering
+ \setlength{\tabcolsep}{8mm}
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Host}& \textbf{Interface} & \textbf{IPv6 Adresse}\\ 
+\midrule
+%\rowcolor {black!10} ISP & Fa0/0 & 2001:DB8:ACAD:1::1/68\\
+\rowcolor {black!10} ISP & Fa0/1 & 2001:DB8:ACAD:1:4000::1/68\\
+%\rowcolor {black!20} ISP & S0/0/0 & 2001:DB8:ACAD:1:1000:1/68\\
+\rowcolor {black!20} ISP2 & Fa0/0 & 2001:DB8:ACAD:1:3000::1/68\\
+%\rowcolor {black!10} ISP2 & Fa0/1 & 2001:DB8:ACAD:1:2000::1/68\\
+%\rowcolor {black!20} ISP2 & S0/0/1 & 2001:DB8:ACAD:1:1000::2/68\\
+%\rowcolor {black!10} MobileRouter & Fa0/0 & 2001:DB8:ACAD:1:3000::2/68\\
+%\rowcolor {black!20} MobileRouter & Fa0/1 & 2001:DB8:ACAD:1:3000::3/68\\
+%\rowcolor {black!10} Host A & Fa0 & 2001:DB8:ACAD:1::4/68 \\
+%\rowcolor {black!20} Host B & Fa0 & 2001:DB8:ACAD:1:2000::4/68 \\
+\rowcolor {black!10} Host C & Fa0 & 2001:DB8:ACAD:1:3000::5/68 \\
+\bottomrule
+\end{tabular}
+\caption{IPv6 Adressen}
+\label{LANHAIPAdressen_Table}
+\end{table} 
+
+Nachdem alle benötigten IPv6 Adressen konfiguriert waren, wurde der Status des Mobile IPv6 Home-Agent Service überprüft. Der Router \textit{ISP2} wurde dazu auf lokale aktive Home-Agents abgefragt. Der verwendete Quellcode kann dem Ausschnitt \hyperref[SHOWHA]{3.2} entnommen werden.\\
+
+\lstinputlisting
+[caption={Zeigen lokaler Home-Agents}
+\label{SHOWHA},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/Show_HA.tex}  
+   
+Die Evaluierung der Ausgabe ergab, dass der Home-Agent Service aktiv ist. Der nächste Schritt war es, Binding Informationen zu erstellen. Binding steht für die Bindung zum Heimnetzwerk, es ist die Assoziation zwischen der Heimadresse und der zugeteilten Care-of-Adresse. Wenn der mobile Knoten das Heimnetz verlässt, sollte der Home-Agent jederzeit wissen unter welcher Care-of-Adresse der Host erreichbar ist. Dazu teilt der mobile Knoten seinem Home-Agent seine temporäre Adresse in Form einer Binding Nachricht mit. Die Binding Nachrichten sind insofern wichtig, damit der Home-Agent weiß, unter welcher Adresse der mobile Knoten erreichbar ist. Der Home-Agent speichert diese Informationen in einer Binding Tabelle und kann somit eingehende Nachrichten an den mobilen Knoten weiterleiten.
+
+Für die Konfiguration von den Binding Parametern ist zunächst eine Access-List notwendig. Mit ihr teilt man dem Home-Agent mit, welche Adressen bzw. welche Adressbereiche die Erlaubnis haben sich mit dem Netz des Home-Agents zu verbinden. Für Testzwecke wurden jegliche Adressen erlaubt. Die Erstellung der IPv6 Access-List ist im folgenden Konfigurationsausschnitt \hyperref[ACL]{3.4} aufgeführt.\\
+
+\lstinputlisting
+[caption={Konfiguration Access-List}
+\label{ACL},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/ACL.tex}                       
+
+Mit der erstellten Access-List wurde anschließend die Binding-Konfiguration durchgeführt. Die Konfiguration beinhaltet eine Vielzahl von Parametern. Es wurde angegeben, welche Access-List betrachtete wird, welche Authentifizierung verwendet werden soll, wie lange das Binding bestehen bleibt, die maximale Anzahl an möglichen Bindungen und das Interval in welcher Zeit die Binding Informationen erneuert werden. Die Binding Konfiguration wurde in folgender Form getätigt:\\
+
+\textit{ISP2(config-ha)$\#$ binding access access-list $|$ auth-option $|$ seconds $|$ maximum $|$ refresh}\\
+
+Die Erstellung der Binding Informationen kann dem Quellcodeausschnitt \hyperref[Binding]{3.5} entnommen werden.\\ 
+
+\lstinputlisting
+[caption={Konfiguration Binding Informationen}
+\label{Binding},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/Binding.tex}
+
+Nachdem die Binding Informationen konfiguriert waren, konnte der Netzwechsel vorgenommen werden. Dazu wurde Host $C$ von seinem Home-Agent (Router \textit{ISP2}) getrennt und mit dem Fremdnetz an Router \textit{ISP} verbunden. Als Konsequenz des Netzwechsels sollte es nun zu Einträgen in die Binding Tabelle des Home-Agents kommen. Ob ein Eintrag in die Binding Tabelle zustande gekommen ist kann mit dem nachfolgenden Quellcode \hyperref[SHOWBinding]{3.6} überprüft werden.\\
+
+\lstinputlisting
+[caption={Überprüfung der Bindings}
+\label{SHOWBinding},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/Show_Binding.tex}
+
+Die Kontrolle des Ergebnisses ergab, dass es zu keinem Eintrag in die Binding Tabelle des Home-Agents gekommen ist. Der Grund dafür ist, dass das Betriebssystem der Laborrechner die Implementierung von Mobile IPv6 nicht gewährleistet. Die mobilen Knoten müssen in gewisser Weise intelligent genug sein um Binding Updates zu senden. Windows 7 oder auch Windows XP enthalten zwar IPv6-Funktionalitäten, jedoch stehen keine Möglichkeiten zur Verfügung, die es erlauben würden einen Windows-Rechner als mobilen Knoten oder als Home-Agent zu implementieren. Windows 7 ist lediglich in der Lage mit mobilen Knoten zu kommunizieren, wobei es die Care-of-Adressen der mobilen Knoten in einer Binding Tabellen zur Verfügung stellt. Der Nachweis dafür kann bei Microsoft nachgelesen werden. Dort heißt es, die Technologie sei für die Endsysteme noch nicht ausreichend ausgearbeitet und steht daher noch nicht zu Verfügung \cite{microsoft}.
+
+Als Konsequenz daraus wurde nach einer alternativen Lösung gesucht. Eine Alternative bietet NEMO, kurz für Network Mobility. Der Versuch der Implementierung des neuen Testszenarios folgt im nächsten Abschnitt \ref{NEMOAnsatz}.          
+    
+\subsection{NEMO Ansatz}
+\label{NEMOAnsatz}
+Mit Network Mobility kann man der fehlenden Intelligenz der Endgeräte entgegenwirken. Bei NEMO dient ein mobiler Router als mobiler Knoten. Somit wird ermöglicht, dass der mobile Knoten jederzeit erreichbar bleibt auch wenn dieser in Bewegung ist. Der mobile Router fungiert dabei als Ansprechpartner für den Home-Agnet, über den HA läuft die gesamte Kommunikation. Es werden sozusagen ganze Netzwerkteile bewegt, nicht nur die Endgeräte. Der mobile Router ist dazu im Stande Binding Updates zu senden. Eine detaillierte Beschreibung der Vorgehensweise bei NEMO befindet sich im Abschnitt \ref{nemo}.
+
+Für die Umsetzung dieses Szenarios wurde eine weitere Netzwerktopologie erstellt. Der Aufbau dieses Testnetzwerks ist der Topologie (refTopNEMO) zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet.
+
+Zunächst wurden analog zur Konfiguration aus Abschnitt \ref{LAN_Ansatz} das Interface \textit{fa 0/0} des Router \textit{ISP2} als Home-Agent deklariert, eine Access-List erstellt und die Binding Parameter festgelegt. Die erforderlichen Konfigurationsschritte können dem Ausschnitt \hyperref[NEMOHAACLB]{3.7} entnommen werden.\\
+
+\lstinputlisting
+[firstline=1, lastline=15, caption={NEMO - HA, ACL und Binding}
+\label{NEMOHAACLB},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/NEMO.tex}
+
+Anschließend musste der NEMO Service am Home-Agent-Router \textit{ISP2} aktiviert werden. Die administrativen Distanz der NEMO Routen wurde mit 10 festgelegt. Der Quellcodeausschnitt \hyperref[NEMOHA]{3.8} zeigt die Konfiguration.\\
+
+\lstinputlisting
+[firstline=41, lastline=44, caption={NEMO am Home-Agent}
+\label{NEMOHA},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/NEMO.tex}   
+
+Als mobiler Router wurde der Router \textit{MobileRouter} in die Topologie aufgenommen.\\
+Die Grund-Konfiguration dieses Routers ist im Anhang \hyperref[C]{C} zu finden.\\
+Die beiden IPv6 Adressen des mobilen Routers wurden ebenfalls statisch zugewiesen und konfiguriert und sind der Tabelle \ref{NEMOAdressen_Table} zu entnehmen.\\
+
+
+\begin{table}[!h]
+\centering
+ \setlength{\tabcolsep}{8mm}
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Host}& \textbf{Interface} & \textbf{IPv6 Adresse}\\ 
+\midrule
+%\rowcolor {black!10} ISP & Fa0/0 & 2001:DB8:ACAD:1::1/68\\
+%\rowcolor {black!10} ISP & Fa0/1 & 2001:DB8:ACAD:1:4000::1/68\\
+%\rowcolor {black!20} ISP & S0/0/0 & 2001:DB8:ACAD:1:1000:1/68\\
+%\rowcolor {black!20} ISP2 & Fa0/0 & 2001:DB8:ACAD:1:3000::1/68\\
+%\rowcolor {black!10} ISP2 & Fa0/1 & 2001:DB8:ACAD:1:2000::1/68\\
+%\rowcolor {black!20} ISP2 & S0/0/1 & 2001:DB8:ACAD:1:1000::2/68\\
+\rowcolor {black!10} MobileRouter & Fa0/0 & 2001:DB8:ACAD:1:3000::2/68\\
+\rowcolor {black!20} MobileRouter & Fa0/1 & 2001:DB8:ACAD:1:3000::3/68\\
+%\rowcolor {black!10} Host A & Fa0 & 2001:DB8:ACAD:1::4/68 \\
+%\rowcolor {black!20} Host B & Fa0 & 2001:DB8:ACAD:1:2000::4/68 \\
+%\rowcolor {black!10} Host C & Fa0 & 2001:DB8:ACAD:1:3000::5/68 \\
+\bottomrule
+\end{tabular}
+\caption{IPv6 Adressen Mobile Router}
+\label{NEMOAdressen_Table}
+\end{table}       
+
+Zusätzlich zur der Konfiguration des Home-Agents wurde NEMO am mobilen Router implementiert. Der mobile Router übernimmt wesentlichen Aufgaben, die durch Windows 7 nicht gewährleistet werden, aber essentiell für die Implementierung von Mobile IPv6 sind.\\
+Zuerst wurde die NEMO Funktionalität am Router aktiviert. Anschließend wurde ein \textit{EUI-64} (Extended Unique Identifier) Interface bestimmt, dadurch wird ermöglicht den Interface-Identifier automatisch zu generieren, um eine IPv6 Adresse ohne manuelle Konfiguration oder zusätzliche Dienste wie DHCP zu erhalten.\\
+Als nächster Schritt folgte die Zuweisung des Heimnetzwerkes, damit erfährt der mobile Router sein Heimnetz und kann somit feststellen, wenn er sich in seinem Heimnetzwerk befindet.\\               
+Darauf folgend wurde es dem mobilen Router ermöglicht eine Heimadresse zu bilden. Diese Adresse setzt sich aus dem 64 Bit langem Interface-Identifier (\textit{EUI-64}) und dem Subnet Präfix zusammen. Der Subnet Präfix ist ein Netzwerkteil und muss somit mit dem Heimnetz übereinstimmen. Daher wurde dem mobilen Router übergeben, dass die Heimadresse aus Heimnetzwerk und dem Interface-Identifier besteht.\\
+Des Weiteren wurde dem mobilen Router mitgeteilt, dass sich nur eindeutig übereinstimmende IPv6 Präfixe registrieren können. Die Lebensdauer der Registrierung wurde dabei auf 600 Sekunden gesetzt. Nach ablaufen dieser Zeit wird der mobile Router nicht mehr als registriert aufgeführt. Somit wird sichergestellt, dass nur aktive mobile Router aufgelistet werden. Um die Registrierung aufrecht zu erhalten wurden Router-Advertisement Nachrichten in einem gewissen Zeitabstand konfiguriert. Diese Advertisement Nachrichten werden verwendet um die Anwesenheit im Netzwerk kundzutun.\\
+Die Router-Advertisement Nachrichten werden in einem gewissen statischen Intervall ausgesandt, es gibt jedoch auch die Möglichkeit diese Nachrichten zu erzwingen. Dazu werden Router-Solicitation Nachricht an die Multicast Adressen geschickt. Dies kann einen Vorteil bei Änderungen  
+im Netzwerk sein, da man nicht erst auf die Router-Advertisement Nachrichten warten muss. Multicast Adressen beschreiben eine Gruppe von Adressen, sie werden gleichzeitig angesprochen und erhalten somit alle die Nachrichten.\\
+Das Intervall der Router-Advertisement Nachrichten wurde auf 200 Sekunden gesetzt. Außerdem wurde ein IPv6 Präfix bestimmt, welcher von den Router-Advertisement Nachrichten angesprochen wird. Der Präfix für das Testnetzwerk lautet \textit{2001:db8::/35}.\\ 
+Abschließend wurde das Interface \textit{fa 0/1} des Router \textit{MobileRouter} als Roaming-Interface deklariert. Roaming ermöglicht es dem mobilen Router in einem Fremdnetz Daten zu empfangen und zu senden.
+
+Die beschriebenen Konfigurationen werden in dem folgendem Quellcodeausschnitt \hyperref[NEMOMR]{3.9} aufgelistet und dienen so zur besseren Veranschaulichung.\\
+
+\lstinputlisting
+[firstline=17, lastline=40, caption={NEMO am Mobile Router}
+\label{NEMOMR},  basicstyle=\ttfamily, keywordstyle=\color{black},]
+{Listings/NEMO.tex}
+
+
+Nachdem die Konfiguration abgeschlossen war, wurde der Netzwechsel vollzogen. Nun sollte es zu Einträgen in die Binding Tabelle des Home-Agents kommen. Nach Überprüfung der Binding Tabelle musste jedoch festgestellt werden, dass es auch dieses mal zu keinen Einträgen gekommen war.\\
+Nach ergiebiger Recherche und Interpretation der Ergebnisse konnte festgestellt werden, dass die zur Verfügung stehende Hardware im Netzwerklabor einer erfolgreichen Umsetzung im Wege steht.\\
+Die unzureichenden Fähigkeiten der Hardware lässt sich auf die Version zurückzuführen. Aktuellere Versionen bieten demnach eine Vielzahl von Erweiterungen und Neuerungen, welche die Implementierung von Mobile IPv6 begünstigen würde. Jedoch konnte mit NEMO aufgeführt werden, dass Mobile IPv6 auch mit Endsystemen möglich ist, in denen sich Endgeräte befinden, welche nicht dazu in der Lage sind Binding Updates zu senden.     
+
+         
+     
+
+        

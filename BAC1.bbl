@@ -39,4 +39,14 @@ F.~Nada, ``Performance analysis of mobile ipv4 and mobile ipv6,'' \emph{The
   International Arab Journal of Information Technology}, vol.~4, no.~2, April
   2007.
 
+\bibitem{microsoft}
+{Microsoft Inc.}, ``{Understanding Mobile IPv6},'' Online-Quelle, April 2004,
+  {\url{http://www.microsoft.com/en-us/download/details.aspx?id=10905}; zuletzt
+  abgerufen am 23.12.2015}.
+
+\bibitem{ciscom}
+{Cisco Systems Inc.}, ``{Implementing Mobile IPv6},'' Online-Quelle, Juli 2012,
+  {\url{http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/15-2mt/ipv6-15-2mt-book/ip6-mobile.pdf};
+  zuletzt abgerufen am 26.01.2016}.
+
 \end{thebibliography}

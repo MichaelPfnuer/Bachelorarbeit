@@ -1,0 +1,31 @@
+hostname ISP2
+!
+ipv6 unicast-routing
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ no shutdown
+ duplex auto
+ speed auto
+ ipv6 address 2001:DB8:ACAD:1:2000::1/68
+ ipv6 ospf 1 area 0
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ no shutdown
+ ipv6 address 2001:DB8:ACAD:1:1000::2/68
+ ipv6 ospf 1 area 0
+!
+ipv6 router ospf 1
+ router-id 2.2.2.2
+
