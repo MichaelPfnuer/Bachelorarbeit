@@ -18,5 +18,74 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Network Mobility (NEMO)}
+\section{Network Mobility (NEMO) Basic Support Protocol}
 \label{nemo}
+
+Um Mobile IPv6 anwenden zu können ist eine Erweiterung des Technologie Stacks von mobiler Endgeräte erforderlich. Da bei einer wirklichen Umsetzung diese von Smartwatch, Smartphone, Tablet bis hin zu einem Laptop gehen würde, kann man erkennen, dass der Aufwand hierfür eher eine abschreckende Wirkung hat.
+
+Eine Lösung für dieses Problem ist das Network Mobility (NEMO) Basic Support Protokoll. Dieses stellt eine standardisierte Erweiterung für das Mobile IPv6 Protokoll dar welche im RFC-3963 beschrieben wird. Es erlaubt, dass ganze Netzwerke sich bewegen können und die Verbindung trotzdem erhalten bleibt. Dies wird dadurch ermöglicht, dass die gesamte Logik weg von den Endgeräten auf Router hin ausgelagert wird. Dies würde eine erforderliche Aufrüstung der Endgeräte unnötig machen.
+
+Ein wichtiger Teil bei der Umsetzung von NEMO ist die Rückwärtskompatibilität mit Mobile IPv6. Ein in NEMO erstellter Home Agent kann auch als Mobile IPv6 Home Agent fungieren.  
+
+Das NEMO Protokoll erweitert die Funktion eines Mobile IPv6 mobilen Knoten um Routing Funktionen, dieser Knoten wird in weiterer Folge als Mobile Router bezeichnet. Dies ist wichtig, da sich der Mobile Router um das Routing zwischen dem aktuellen Verbindungsknoten und dem an ihm hängenden Subnet kümmert.
+
+Als Verbindung zwischen Mobile Router und Home Agent wird ein bidirektionaler Tunnel aufgebaut. Gleich wie bei Mobile IPv6 wird dieser erstellt, sobald der Mobile Router ein Binding Update an den Home Agent schickt.
+
+
+\subsection{Funktionsweise}
+\label{nemo_function}
+
+Ein mobiles Netzwerk kann beliebig von einem Access Point zum nächsten wandern, kann aber selbst nur über ein bestimmtes Gateway erreicht werden. Dieses Gateway stellt der Mobile Router dar, welcher das Netzwerk hinter ihm mit den Access Points verbindet. Dies bedeutet, jedes mobile Netzwerk hat zumindest einen Mobile Router. Es besteht aber die Möglichkeit, dass sich ein Mobile Router mit einem anderen verbindet. 
+
+Gleich wie bei Mobile IPv6 wird dem Mobile Router von seinem Home Agent eine Home Adresse gegeben. Es ist auch möglich, dass der Mobile Router mehrere Home Adressen zugewiesen bekommt. Diese Adresse leitet er an sein mobiles Netzwerk weiter.  
+
+Wenn nun der Mobile Router von einem Access Point zum nächsten wechselt, wird ihm eine CoA zugewiesen, welche er per Binding Update an seinen Home Agent weiter schickt. Dieser erzeugt in seinem Cash einen Eintrag, in dem die Home Adresse mit der aktuellen CoA eingetragen wird.
+Um einem Knoten in seinem Netzwerk eine Verbindung nach außen zu ermöglichen, signalisiert der Mobile Router dies seinem Home Agent mit einem speziellen Flag (R) im Binding Update. 
+ 
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderTheoretischerTeil/Binding_Flag.png}
+  \caption{Binding Update mit R - Flag}
+  \label{nemo_binding_flag}
+\end{figure}
+
+\FloatBarrier
+\
+Der in Abbildung \ref{nemo_binding_flag} dargestellte Binding Update Header hat das Mobile Router Flag (R) gesetzt welches dem Home Agent mitteilt das es sich um ein Binding Update von einem Mobile Router handelt. Falls dieses Flag auf 0 gesetzt sein sollte nimmt der Home Agent an der Mobile Router verhält sich wie ein gewöhnlicher mobiler Knoten. Dies bedeutet er darf keine Pakete für das mobile Netzwerk an den Mobile Router weiterleiten.
+
+Ein gesetztes Acknowledge (A) Flag bedeutet das der Sender ein Acknowledgement für den Empfang des Binding Updates erwartet. Mit dem Home Registration (H) Flag fragt der Sender den Empfänger ob er als sein Home Agent fungieren kann. Das Link-Local Address Compatibility (L) Flag wird gesetzt wenn der Interface Identifier der Heim Adresse des Senders derselbe ist wie seine Link-local Adresse.\\
+Das Key Management Mobility Capability (K) Flag hat nur für Binding Updates zwischen Knoten und Home Agent Bedeutung. Denn dieses Bit sagt ob die IPsec Verbindung zwischen Knoten und Home Agent einen Netzwechsel des Knoten überstehen würde.
+
+Das Reserved Feld ist ungenützt und muss vom Sender mit 0 initialisiert und vom Empfänger ignoriert werden. Die Sequence Nummer besteht aus einem 16 bit unsigned Integer und hilft dem Empfänger die Binding Updates zu ordnen und dem Sender Acknowledges zuzuordnen.\\
+Die Lifetime ist ein 16 bit unsigned Integer wobei eine Zeiteinheit 4 Sekunden entspricht. Der Wert gibt die Zeiteinheiten an bis das Binding Update als abgelaufen gilt und verworfen wird.\\
+Die Mobility Options ist ein variables Feld, mit der Auflage das der Header ein vielfaches eines 8 Bit Integer lang ist. Falls der Empfänger die gesendete Option nicht versteht muss er sie verwerfen und den Rest weiter verarbeiten.  
+
+   
+Dieses Update kann auch Präfixes des mobilen Netzes enthalten, damit der Home Agent Nachrichten an einen speziellen Knoten weiterleiten kann. Dafür gibt es eine Mobility Header Option, in welchen der Präfix übertragen wird. 
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderTheoretischerTeil/Mobility_Header.png}
+  \caption{Mobility Header für Präfixübertragung}
+  \label{nemo_header}
+\end{figure}
+
+\FloatBarrier
+\
+Der in Abbildung \ref{nemo_header} dargestellte Aufbau des Mobile Network Präfix Option Headers hat eine 16 Byte großes Feld für den Netzwerk Präfix. Das Feld Reserved ist ungenutzt muss aber vom Sender auf 0 gesetzt werden und muss vom Empfänger ignoriert werden. Das Length Feld gibt die Länge dieses Headers ohne Type und Prefix Feld an. Es besteht aus 8 Bit unsigned integern. Das Type Feld dient zur Identifikation Mobile Option und hat für diese Option den Wert 6. Wenn dieser Wert vom Empfänger nicht erkannt wird die Option verworfen und der Rest des Binging Updates weiterverarbeitet.    
+
+Sollte es mehrere Knoten im mobilen Netzwerk geben und der Mobile Router will eine Paketübertragung zu allen, sendet er alle Netzwerk Präfixes in einer Nachricht. Es besteht die Möglichkeit, dass das ganze Netzwerk statisch konfiguriert ist. In diesen Fall weiß der Home Agent bereits alle Präfixes des mobilen Netzwerks und der Mobile Router wird keine Informationen diesbezüglich versenden. Der Home Agent würde mit der Übermittlung an die Knoten anfangen sobald er vom Mobile Router das Binding Update mit dem Flag (R) empfangen hat. 
+
+
+Sodann sendet er ein Binding Acknowledgement an den Mobile Router und ein bidirektionaler Tunnel wird zwischen den beiden aufgebaut. Die Endpunkte dieses Tunnels sind auf der einen Seite die CoA des Mobile Router und auf der anderen Seite die Adresse des Home Agents. 
+
+Wenn nun ein Correspondent Node ein Daten Paket an einen Knoten im mobilen Netzwerk sendet, wird das Paket zum Home Agent des gesamten mobilen Netzwerks weitergeleitet.  Dieser leitet über den Tunnel das Paket an die aktuelle CoA des Mobile Routers weiter. Bevor der Mobile Router das Paket nun weiterleite überprüft er ob die Source Adresse am äußeren IPv6 Header der des Home Agent entspricht. Falls die Pakete mit IPsec im Tunnel geschützt sind dann entfällt diese Überprüfung. Außerdem muss der Mobile Router die Zieladresse im inneren IPv6 Header nach eine Übereinstimmigkeit mit einem Präfix des mobilen Netzwerks überprüfen. Sollte keine Übereinstimmung gefunden werden und der Präfix unbekannt sein dann wird das Paket noch im Mobile Router verworfen, andernfalls leitet er des Paket an das Interface des Knoten weiter. 
+
+Diese Präfixüberprüfung ist nicht notwendig, wenn Home Agent und Mobile Router ein Routing Protokoll im Tunnel verwenden. Dann sendet der Mobile Router anstatt der Präfix Information mit dem Binding Update Routing Protokoll Updates. 
+
+
+
+
+
+  

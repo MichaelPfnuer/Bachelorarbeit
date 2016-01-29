@@ -20,12 +20,218 @@
 
 \chapter{Praktischer Teil}
 
-Die Darstellung der Untersuchungs-, Anwendungs- oder Umsetzungs-Methoden und die Beschreibung der Umsetzung sollen die Wege aufzeigen, wie man zu bestimmten Ergebnissen gelangt ist. Es ist nachzuweisen, dass die dargestellten Implementierungen, Analysen und abgeleiteten Schlussfolgerungen nicht nur Frucht eigener kreativer Überlegungen sind, sondern dass sie auf einer soliden Informationsbasis und einem nachvollziehbaren Analyseverfahren beruhen.
+\subsection{Aufgabenstellung: Erarbeitung einen Mobile IPv6 Testaufbaus} 
 
-\section{Verwendete Materialien}
+Dieser Testaufbau sollte unter der Berücksichtigung erstellt werden, ihn in einer Laborübung für den Netzwerkbereich des Studiengangs Informationstechnik und Systemmanagement an der Fachhochschule Salzburg einsetzen zu können.
+
+Der Testaufbau sollte die Grundfunktionen von Mobile IPv6 darstellen und mit dem vorhandenen Laborequipment der FH Salzburg, welches in Tabelle \ref{Tabelle_Used_Devices} aufgelistet wird, realisiert werden. Damit die Funktion und Umsetzung von Mobile IPv6 überhaupt möglich wird, war eine IPv6 Umgebung im Labor zu erstellen, welche als Basisaufbau diente. Dieser Basisaufbau sollte dann mit den entsprechenden Mobile IPv6 Funktionen erweitert werden. Aufgabe war es, den Wechsel eines beliebigen Endgerätes von einem Netz zu einem anderen zu realisieren, wobei dieses Endgerät immer dieselbe IP Adresse behält. Die Umsetzung dieser Eigenschaft von Mobile IPv6 war die Kernaufgabe und wurde daher als ersten Ziel zur Umsetzung ausgewählt.
+ 
+Je nach Fortschritt und Arbeitsaufwand sollte dieser Aufbau mit anderen Funktionen, wie zum Beispiel der Migration von Mobile IPv6 Paketen in eine IPV4 Umgebung oder Voice over IP, erweitert werden, sodass diese dann dem Umfang einer Laborübung im Netzwerkbereich entsprechen.  
+
+\section{Versuchsaufbauten}
+
+\subsection{Verwendetes Material}
+
+In Tabelle \ref{Tabelle_Used_Devices} ist eine Auflistung aller verwendeten Materialien über alle Versuchsaufbauten hinweg. Die genaue Zahl der verwendeten Geräte in den einzelnen Versuchen variiert sowie auch die Verwendeten IOS Versionen, da diese den jeweiligen Versuchsaufbauten angepasst wurde.
+
+Die Geräte selbst sind aus dem Bestand der Fachhochschule Salzburg Studiengang Informationstechnik und Systemmanagement stand Wintersemester 2015. Es wurde dabei bewusst Equipment verwendet welches in Größerer Stückzahl vorhanden war, da die Aufgabenstellung es vorsah, bei erfolgreichem Abschluss des Projekts, dieses als Übungseinheit in den laufenden Unterricht einzubinden.  
+
+\begin{table}[!h]
+%\rowcolors{2}{black!10}{black!20}
+\centering
+\begin{tabular}{lcl}
+\toprule
+\multicolumn{1}{p{3,5cm}}{\centering \textit{Gerät}} & \multicolumn{1}{p{2cm}}{\centering \textit{Anzahl} } & \multicolumn{1}{p{6,5cm}}{\centering \textit{IOS} }\\\midrule
+\rowcolor {black!10} \textbf{Router - Cisco 1841} & 3  & c1841-advipservicesk9-mz.151-4.M10\\
+\rowcolor {black!10}&&c1841-adventerprisek9-mz.124-22.YB6\\
+\rowcolor {black!10}&&\\
+\rowcolor {black!20} \textbf{Switch - Catalyst 3550} & 2 & c1841-advipservicesk9-mz.151-4.M10\\
+\rowcolor {black!20}&&c1841-adventerprisek9-mz.124-22.YB6\\
+\rowcolor {black!20}&&\\
+\rowcolor {black!10} \textbf{WLAN Interface für Cisco 1841} & 1 & - - -\\
+\rowcolor {black!10}&&\\
+\rowcolor {black!20} \textbf{PC} & 3 & Windows 7\\
+\bottomrule
+\end{tabular}
+\caption{Auflistung des Laborequipments}
+\label{Tabelle_Used_Devices}
+
+\end{table}
 
 
+\newpage 
 
 \section{Physischer Aufbau}
+
+\subsection{Versuch I}
+
+\subsubsection{Aufbau}
+
+Um mit der richtigen Umsetzung von Mobile IPv6 beginnen zu können, sollte ein Basisaufbau erstellt werden. Dieser Basisaufbau sollte ein kleines Netz darstellen, in welchem nur IPv6 Adressen verwendet werden. Das Netz selbst bestand aus zwei Routern, die über einen seriellen Anschluss verbunden waren. Jeder Router war mit einem Switch verbunden, an welchem je ein Host hing. Dieser Aufbau war dazu gedacht als Basis für weitere Übungen zu dienen, um die verschiedenen Möglichkeiten von Mobile IPv6 zu testen. 
+
+Der Mobile IPv6 Funktion wurde am Router Mobile, siehe Grafik \ref{Versuch1}, getestet. Da ein möglichst realistisches Szenario gewählt worden war, wurde dieser Router mit einem WLAN Interface ausgestattet. Dieses WLAN Interface sollte ein WLAN Signal senden, welches in unterschiedliche SSIDs unterteilt war. Diesen SSIDs waren unterschiedlich Adressen zugewiesen, allerdings waren sie ohne jegliche Authentifizierung konfiguriert. Wenn ein Netzwechsel nun initiiert werden sollte war eine der SSIDs zu deaktivieren. So konnte der Netzwechsel der Endgeräte simuliert werden indem sie sich von einer SSID zur nächsten verbinden würden.\\ 
+Dabei war vor allem der Gedanke ausschlaggebend, dass die zeitliche Ersparnis, die einem Mobile IPv6 ermöglicht indem man trotz Netzwechsel die Verbindung aufrechterhalten kann, dadurch verloren gehen würde, wenn man sein Endgerät von einem Fast Ethernet Port auf einen anderen Stecken musste. Außerdem war die Idee, den Versuchsaufbau um eine VoIP Funktion zu erweitern auch sehr stark mit eingeflossen. Da Smartphones, die über VoIP kommunizieren, trotz eines Netzwechsels die Verbindung nicht neu aufbauen müssten.  
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderAufbau/Versuch1.png}
+  \caption{Basisaufbau Versuch 1}
+  \label{Versuch1}
+\end{figure}
+
+\FloatBarrier
+\
+\begin{table}[!h]
+%\rowcolors{2}{black!10}{black!20}
+\centering
+\begin{tabular}{ll}
+
+\toprule
+\multicolumn{1}{p{5cm}}{\centering \textit{Name}} & \multicolumn{1}{p{5cm}}{\centering \textit{IP-Adresse} }\\\midrule
+
+\rowcolor {black!10} \textbf{Ausgangsnetz} & 2001:DB8:ACAD:1::/64 \\
+\rowcolor {black!20} \textbf{ISP} & \\
+\rowcolor {black!20} {FA 0/0} & 2001:DB8:ACAD:1::1/68 \\
+\rowcolor {black!20} {S 0/0/1} & 2001:DB8:ACAD:1:1000:1/68 \\
+\rowcolor {black!10} \textbf{Mobile} &\\
+\rowcolor {black!10} {FA 0/1} & 2001:DB8:ACAD:1:2000::1/68 \\
+\rowcolor {black!10} {S 0/0/1} & 2001:DB8:ACAD:1:1000::2/68 \\
+\rowcolor {black!20} \textbf{Host A} &\\
+\rowcolor {black!20} {FA 0} & 2001:DB8:ACAD:1::4/68 \\
+\rowcolor {black!10} \textbf{Host B} &\\
+\rowcolor {black!10} {FA 0} & 2001:DB8:ACAD:1:2000::4/68 \\
+
+\bottomrule
+\end{tabular}
+\caption{IP Adressen Versuch 1}
+\label{Tabelle_IP_Adr_Versuch_1}
+\end{table}
+
+
+\subsubsection{Ergebnisse}
+
+Die Funktionen konnten, so wie sie im Aufbau gedacht waren, nicht umgesetzt werden, da im Zuge des praktischen Arbeitens Probleme auftauchten, die nicht zu lösen waren.
+
+Eine Schwierigkeit stellte die Auswahl der richtigen IOS Version für die Router dar. Denn Mobile IPv6 Funktionen wurden nie vollständig in eine IOS Version implementiert, sondern stückchenweise hinzugefügt. So war es bei einer IOS Version so, dass die Mobile IPv6 Befehle nicht in der Auflistung aller möglichen Befehle aufschien aber trotzdem vom System verarbeitet wurden, wenn man sie vollständig per Hand eintippte. Der Vergleich von unterschiedlichen IOS Versionen findet in Kapitel \ref{subsection_Auswahl_IOS} statt. 
+
+Ein Problem entstand durch das verwendete WLAN Interface. Dieses war in der Lage, mit IPv6 Adressen zu arbeiten. Allerdings konnte es keine Mobile IPv6 Befehle interpretieren. Die genauere Ausführung dieses Problems findet in Kapitel \ref{WLAN_Ansatz} statt. Es konnte auch nicht mit einem anderen WLAN Interface gearbeitet werden, da für die verwendeten Router aus altersbedingten Gründen keine Interfaces mehr produziert werden. 
+
+So wurde Versuch I überarbeitet und in Versuch II in adaptierter Form umgesetzt.  
+
+
+
+\subsection{Versuch II}
+
+\subsubsection{Aufbau}
+
+Da es im Versuch I Probleme mit dem WLAN Interface gab, wurde im Versuch II auf dieses verzichtet. Die Mobile IPv6 Fähigkeiten sollten auf andere Art getestet werden. Ein ausschlaggebender Faktor bei der Überlegung für diesen Aufbau war, ihn mit dem vorhandenen Equipment des Labors zu realisieren. Mit der zusätzlich selbstgewählten Auflage, dass das zur Realisierung verwendete Material in groß genügender Stückzahl vorhanden war, damit ihn mehrere Laborgruppen parallel ausführen könnten.  Deswegen wurde ein sehr minimalistischer Versuchsaufbau erarbeitet. Der neue Basisaufbau beinhaltete nun 2 Router, die über einen seriellen Link miteinander verbunden waren. Außerdem war an jedem Router noch je ein Host angehängt. Die Grundidee war es, die einzelnen Interfaces der Router mit unterschiedlichen IP Adressen zu versehen. Der Netzwechsel, und damit der Beweis der Mobile IPv6 Funktionalität, sollte durch das Umstecken der einzelnen Hosts erfolgen. 
+
+Dies bedeutet zwar einen längeren zeitlichen Faktor beim Netzwechsel in Kauf nehmen zu müssen, sollte aber trotzdem die Möglichkeiten demonstrieren, immer unter ein und derselben IP Adresse erreichbar zu sein, obwohl sich der Verbindungsknoten nach außen hin geändert hat. Außerdem bestand dadurch die Option, an jedes Interface eines Routers einen beliebigen Host anhängen zu können und eine sofortige Kommunikation untereinander zu ermöglichen. Dies war für eine größere, Gruppenübergreifende Laborübung eine Möglichkeit, Variation einzubringen.
+
+
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderAufbau/Versuch2.png}
+  \caption{Basisaufbau Versuch 2}
+  \label{Versuch2}
+\end{figure}
+\FloatBarrier
+\
+\begin{table}[!h]
+%\rowcolors{2}{black!10}{black!20}
+\centering
+\begin{tabular}{ll}
+\toprule
+\multicolumn{1}{p{5cm}}{\centering \textit{Name}} & \multicolumn{1}{p{5cm}}{\centering \textit{IP-Adresse} }\\\midrule
+
+\rowcolor {black!10} \textbf{Ausgangsnetz} & 2001:DB8:ACAD:1::/64 \\
+\rowcolor {black!20} \textbf{ISP} & \\
+\rowcolor {black!20} {FA 0/1} & 2001:DB8:ACAD:1:4000::1/68 \\
+\rowcolor {black!20} {FA 0/0} & 2001:DB8:ACAD:1::1/68 \\
+\rowcolor {black!20} {S 0/0/1} & 2001:DB8:ACAD:1:1000:1/68 \\
+\rowcolor {black!10} \textbf{ISP2} &\\
+\rowcolor {black!10} {FA 0/1} & 2001:DB8:ACAD:1:2000::1/68 \\
+\rowcolor {black!10} {FA 0/0} & 2001:DB8:ACAD:1:3000::1/68 \\
+\rowcolor {black!10} {S 0/0/1} & 2001:DB8:ACAD:1:1000::2/68 \\
+\rowcolor {black!20} \textbf{Host A} &\\
+\rowcolor {black!20} {FA 0} & 2001:DB8:ACAD:1::4/68 \\
+\rowcolor {black!10} \textbf{Host B} &\\
+\rowcolor {black!10} {FA 0} & 2001:DB8:ACAD:1:2000::4/68 \\
+
+\bottomrule
+\end{tabular}
+\caption{IP Adressen Versuch 2}
+\end{table}
+\label{Tabelle_IP_Adr_Versuch_2}
+
+\subsubsection{Ergebnisse}
+
+Im Zuge dieses Versuchsaufbaus ergab sich immer mehr die Problematik der interaktiven Kommunikation zwischen Host und Router. Denn damit der Host immer unter derselben IP Adresse erreichbar sein kann, muss der Host seinem Home Agent mitteilen, wenn er einen Netzwechsel vollzogen hat und unter über welche Adresse er nun erreichbar ist. Auch wenn der Home Agent eine Anfrage weiterleitet und der Host eine direkte Verbindung mit seinem Kommunikationspartner aufbaut, um weniger Redundanz im Netz zu haben, war es nötig, dass der Host in der Lage war, selbst Daten und Informationen zu senden und empfangen.
+
+Auch wenn man auf dynamische Weise eine Adresszuweisung machen wollte war es nötig, dass der Host aktiv kommunizierte. Denn einer der großen Hauptvorteile von Mobile IP ist, dass Applikationen in den oberen Schichten vom Netzwechsel in den unteren nichts mitbekommen. Es ist zwar möglich, einem Host, wenn er sich das erste Mal mit einem Router verbindet, über DHCP eine Adresse zuzuweisen und diesen Router als Home Agent für den Host zu erstellen. Wenn sich der Host jedoch mit einem anderen Netz verbindet, wird im dort wieder eine neue Adresse zugewiesen und diese Adresse, auch ?Care of Adresse? genannt, muss der Host an seinen Home Agent weiterleiten damit dieser in der Lage ist, ihn zu erreichen. Ein erneutes Verbinden mit einer Applikation unter der neu erhaltenen IP Adresse wäre zwar möglich, jedoch widersprüchlich zum Mobile IP Gedanken.
+ 
+Es stellte sich heraus, dass die verwendeten Host nicht in der Lage waren, diese Interaktionen zu realisieren. Eine genauere Ausführung zu diesem Problem findet sich in Kapitel \ref{LAN_Ansatz}. Deshalb wurde Versuch II, die neuen Ergebnisse miteinbeziehend, überarbeitet und in Versuch III umgesetzt.
+
+
+\subsection{Versuch III}
+
+\subsubsection{Aufbau}
+
+Da sich in Versuch II gezeigt hatte, dass die zur Verfügung stehenden Endgeräte nicht Mobile IPv6 fähig waren, nahm Versuch III eine Erweiterung des Mobile IPv6 Protokolls als Grundstein her. Die Network Mobility (NEMO) Erweiterung lagert die Mobile IPv6 Funktionen auf die Router aus. Dies bedeutet, dass der Router in der Lage ist, einen Netzwechseln zu vollziehen und mit ihm ebenso die verbundenen Endgeräte. Dies kann unabhängig von allen Endgeräten passieren, da die Logik komplett am Router verarbeitet wird. Ein Beispiel hierfür sind öffentlichen Verkehrsmittel. Wenn diese eine Internetanbindung im Transportwagen anbieten, werden sich viele Endgeräte mit dem Knoten verbinden. Für die Endgeräte bleibt dieser Verbindungsknoten immer derselbe, der Knoten selbst jedoch ist mit dem Transportmittel in Bewegung und muss sich deshalb immer eine neue Verbindung suchen, vollzieht also immer wieder einen Netzwechsel. Hierbei könnte Mobile IPv6 eine Lösung anbieten, um diesen Netzwechsel zu optimieren. 
+
+Der neue Grundaufbau bestand deshalb aus drei Routern. Zwei davon, ISP und ISP2, stellten unterschiedliche Netze dar und der dritte, Mobile Router, einen zwischen den Netzen wechselnden Knoten. Je ein Host war an jeden Router mit dem Ziel angeschlossen, sich untereinander trotz Netzwechsels desselben immer noch erreichen zu können.
+
+
+\begin{figure}[!h] 
+  \centering
+     \includegraphics[scale=1]{BilderAufbau/Versuch3.png}
+  \caption{Basisaufbau Versuch 3}
+  \label{Versuch3}
+\end{figure}
+
+\FloatBarrier
+\
+\begin{table}[!h]
+%\rowcolors{2}{black!10}{black!20}
+\centering
+\begin{tabular}{ll}
+\toprule
+\multicolumn{1}{p{5cm}}{\centering \textit{Name}} & \multicolumn{1}{p{5cm}}{\centering \textit{IP-Adresse} }\\\midrule
+
+\rowcolor {black!10} \textbf{Ausgangsnetz} & 2001:DB8:ACAD:1::/64 \\
+\rowcolor {black!20} \textbf{ISP} & \\
+\rowcolor {black!20} {FA 0/1} & 2001:DB8:ACAD:1:4000::1/68 \\
+\rowcolor {black!20} {FA 0/0} & 2001:DB8:ACAD:1::1/68 \\
+\rowcolor {black!20} {S 0/0/1} & 2001:DB8:ACAD:1:1000:1/68 \\
+\rowcolor {black!10} \textbf{ISP2} &\\
+\rowcolor {black!10} {FA 0/1} & 2001:DB8:ACAD:1:2000::1/68 \\
+\rowcolor {black!10} {FA 0/0} & 2001:DB8:ACAD:1:3000::1/68 \\
+\rowcolor {black!10} {S 0/0/1} & 2001:DB8:ACAD:1:1000::2/68 \\
+\rowcolor {black!20} \textbf{Mobile} &\\
+\rowcolor {black!20} {FA 0/1} & 2001:DB8:ACAD:1:3000::3/68 \\
+\rowcolor {black!20} {FA 0/0} & 2001:DB8:ACAD:1:3000::2/68 \\
+\rowcolor {black!10} \textbf{Host A} &\\
+\rowcolor {black!10} {FA 0} & 2001:DB8:ACAD:1::4/68 \\
+\rowcolor {black!20} \textbf{Host B} &\\
+\rowcolor {black!20} {FA 0} & 2001:DB8:ACAD:1:2000::4/68 \\
+\rowcolor {black!10} \textbf{Host C} &\\
+\rowcolor {black!10} {FA 0} & 2001:DB8:ACAD:1:3000::5/68 \\
+
+\bottomrule
+\end{tabular}
+\caption{IP Adressen Versuch 3}
+\end{table}
+\label{Tabelle_IP_Adr_Versuch_3}
+
+\subsubsection{Ergebnisse}
+Ergebnis dieses Versuchsaufbaus war, dass trotz NEMO Erweiterung die Mobile IPv6 Funktionalität nicht hergestellt werden konnte. Am Router konnte NEMO zwar konfiguriert werden, sodass die Endgeräte selbst nicht mehr intelligent genug für den Informationsaustausch sein mussten. Nachdem aber der Mobile Router seinen Netzwechsel vollzogen hatte, wurden keine Informationen mehr zwischen den Routern ausgetauscht. In Folge war eine Verbindung zwischen den Hosts deshalb nicht herzustellen. 
+Die genaue Ausführung des Problems findet in Kapitel \ref{NEMOAnsatz} statt.    
+    
+
+
+
+
+
 
 

@@ -23,11 +23,11 @@ Um den Aufbau des Mobile IPv6 Szenarios im Netzwerklabor durchführen zu können, 
 
 Die erste Überlegung für den Aufbau des Szenarios war, den Wechsel zwischen den Netzwerken mittels WLAN zu ermöglichen. Dazu wird ein Wireless Access Point benötigt, dieser sollte durch einen Router mit einem WLAN Interface repräsentiert werden.
 
-Als Router stand ein Cisco 1841 Integrated Services Router zur Verfügung. Der Cisco 1841 Router hat die Möglichkeit verschiedene Interfaces über mehrere Steckplätze aufzunehmen. Ein Steckplatz wurde verwendet um das WLAN Interface einzusetzen. Die Idee war es über dieses WLAN Interface zwei Netzwerke mit verschiedenen Netzwerknamen (SSID) auszustrahlen. Der mögliche Aufbau dieses Szenarios kann der Abbildung (...WLAN-Top) entnommen werden.
+Als Router stand ein Cisco 1841 Integrated Services Router zur Verfügung. Der Cisco 1841 Router hat die Möglichkeit verschiedene Interfaces über mehrere Steckplätze aufzunehmen. Ein Steckplatz wurde verwendet um das WLAN Interface einzusetzen. Die Idee war es über dieses WLAN Interface zwei Netzwerke mit verschiedenen Netzwerknamen (SSID) auszustrahlen. Der mögliche Aufbau dieses Szenarios kann der Abbildung \ref{Versuch1} entnommen werden.
 
 \subsection{Analyse des WLAN Interfaces}
 Um den Service des mobilen IPv6 zu implementieren, muss dieses Interface die Konfiguration eines Home Agents unterstützen. Die Überprüfung des Interfaces auf diese Fähigkeit ergab, dass die benötigten Konfigurationsschritte nicht unterstützt werden. Nach ausgiebiger Recherche, unter anderem mit Rücksprache mit dem Hersteller Cisco, musste festgestellt werden, dass die Hardware die Technologie des mobilen IPv6 noch nicht unterstützt. Somit musste die Idee, den Netzwechsel mit Wireless Netzen zu simulieren, durch eine Alternativlösung ersetzt werden.\\
-Die Alternative war schnell gefunden, man kann den Netzwechsel auch durch manuelles Stecken der Netzwerkkabel auf verschiedene Interfaces des Routers simulieren. Dabei stellt jedes Interface ein anderes Netzwerk da. Dieses Szenario wir in Punkt (..LAN) ausführlich beschrieben.
+Die Alternative war schnell gefunden, man kann den Netzwechsel auch durch manuelles Stecken der Netzwerkkabel auf verschiedene Interfaces des Routers simulieren. Dabei stellt jedes Interface ein anderes Netzwerk da. Dieses Szenario wir in Punkt \ref{LAN_Ansatz} ausführlich beschrieben.
 
 \subsection{Analyse des Routers}
 Des Weiteren muss der Router die Mobile IPv6 Konfiguration unterstützen. Diese Konfiguration benötigt die Implementierung eines Home-Agents auf einem Interface des Routers, die Aktivierung des mobilen Routers und die Aktivierung des NEMO Dienstes.\\
@@ -35,6 +35,7 @@ Um die benötigten Dienste zu aktivieren, bedarf es einer richtigen Version des B
 Unter Berücksichtigung der geforderten Services musste eine Recherche angestellt werden, um die korrekte IOS Version zu ermitteln. Nach dem Vergleich der verschiedenen Features der IOS Versionen konnte das passende Betriebssystem eruiert werden.\\
 
 \subsection{Auswahl des IOS}
+\label{subsection_Auswahl_IOS}
 Bei der Suche nach der passenden Software wurde davon ausgegangen, dass das aktuellste IOS alle benötigten Eigenschaften besitzt. Dies erwies sich jedoch als Trugschluss. Man muss das Betriebssystem nach den geforderten Eigenschaften auswählen. Es wurden zwei Versionen in Betracht gezogen, zum einen die aktuelle IOS Version \textit{c1841-advipservicesk9-mz.151-4.M10} und zum anderen die Version \textit{c1841-adventerprisek9-mz.124-22.YB6}.\\ 
 
 \subsubsection*{Gegenüberstellung der beiden IOS Versionen:}
@@ -62,10 +63,11 @@ Nach intensiver Erarbeitung der erforderlichen Eigenschaften fiel die Wahl, mit 
 IOS Version \textit{c1841-adventerprisek9-mz.124-22.YB6}. Die Dienste \textit{Mobile-Router} und \textit{NEMO} sind für die Ausarbeitung des Szenarios dieser Arbeit essentiell und müssen gegeben sein. Der Gedanke hinter der Technologie \textit{NEMO} wird im Abschnitt \ref{nemo} detailliert erläutert.     
 
 \subsection{Analyse der Endgeräte}
+\label{subsection_Analyse_der_Endgeraete}
 Die Endgeräte in einer Mobile IPv6 Umgebung müssen IPv6 fähig sein und zusätzlich den Dienst des mobilen IPv6 unterstützen.\\
-Mobile Knoten tauschen mit ihrem Home-Agent Informationen aus. Welche Informationen dabei ausgetauscht werden, wird in Punkt (...) beschrieben.\\   
+Mobile Knoten tauschen mit ihrem Home-Agent Informationen aus. Welche Informationen dabei ausgetauscht werden, wird in Punkt \ref{nemo_function} beschrieben.\\   
 Beim Aufbau des Szenarios im Netzwerklabor standen Rechner mit Windows 7 zur Verfügung. Windows 7 ist IPv6 fähig, unterstützt aber den Dienst Mobile IPv6 momentan noch nicht. Unter Windows bietet den Dienst lediglich das Betriebssystem Windows Server 2003. Microsoft gibt an, dass die Technologie für andere Betriebssysteme noch nicht ausreichend ausgearbeitet wurde und somit noch nicht zu Verfügung steht\cite{microsoft}.\\
-Sollten, wie es bei dieser Arbeit vorkommt, die Endgeräte Mobile IPv6 nicht unterstützen, kann \textit{NEMO} Abhilfe verschaffen. Die Funktion von \textit{NEMO} wir im Abschnitt \ref{nemo} genauer erklärt.              
+Sollten, wie es bei dieser Arbeit vorkommt, die Endgeräte Mobile IPv6 nicht unterstützen, kann \textit{NEMO} Abhilfe verschaffen. Die Funktion von \textit{NEMO} wird im Abschnitt \ref{nemo} genauer erklärt.              
 
 \section{Implementierung}
 In diesem Abschnitt wird beschrieben, welche Konfigurationen auf den verwendeten Cisco 1841 Router vorgenommen wurden. Im laufe der praktischen Ausarbeitung kam es zu Änderungen des Grundaufbaues und somit wurden verschieden Konfigurationen durchgeführt und evaluiert. Die wesentlichen Anforderungen an die Router liegen neben den Grundvoraussetzungen, wie Routing-Protokolle und die Unterstützung von IPv6, in den Funktionalitäten, welche die Konfiguration von Mobile IPv6 ermöglichen.\\
@@ -120,7 +122,7 @@ Eine Auflistung der vorgenommen Grund-Konfigurationen der Router \textit{ISP} un
 \subsection{WLAN Ansatz}
 \label{WLAN_Ansatz}
 Um die Funktion von Mobile IPv6 zu testen, sollte einen Netzwechsel stattfindend. Dazu wurden zunächst versucht den Netzwechsel mit Hilfe von zwei WLAN Netzen zu simulieren.\\
-Der Aufbau dieses Testnetzwerks ist der Topologie (refTopWLAN) zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet. Es wurden zwei WLAN Netzwerke am Router konfiguriert. Danach sollte es dem Endgerät möglich sein sich jeweils mit einem der beiden Netze zu verbinden. Ein Netz sollte dabei als Heimnetzwerk des Endknotens dienen, das andere Netzwerk sollte ein Fremdnetz darstellen.\\
+Der Aufbau dieses Testnetzwerks ist der Topologie \ref{Versuch1} zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet. Es wurden zwei WLAN Netzwerke am Router konfiguriert. Danach sollte es dem Endgerät möglich sein sich jeweils mit einem der beiden Netze zu verbinden. Ein Netz sollte dabei als Heimnetzwerk des Endknotens dienen, das andere Netzwerk sollte ein Fremdnetz darstellen.\\
 Das WLAN Module des Cisco Routers bietet zwei Interfaces, zum einen das Interface \textit{Dot11Radio 0/0/1} und zum anderen das Interface \textit{interface Dot11Radio 0/1/0}. 
 
 Für dieses Testszenario wurde das Interface \textit{Dot11Radio 0/1/0} gewählt. Auf diesem Interface wurden zwei Subinterface erstellt. Anschließend wurde jedem VLAN ein Netzwerk mit eigenem SSID zugewiesen. Für dieses Testnetz erfolgt der Zugriff auf das Netzwerk ohne Authentifizierung.
@@ -128,7 +130,7 @@ Für dieses Testszenario wurde das Interface \textit{Dot11Radio 0/1/0} gewählt. A
 Die vorgenommene Konfiguration der beiden WLAN Netzwerke am Router \textit{ISP2} ist im Anhang \hyperref[B]{B} zu finden.  
 
 
-Das, dem Subinterface \textit{Dot11Radio 0/1/0.1} zugewiesene, Netzwerk sollte als Heimnetz dienen. Nachdem die Subinterface erfolgreich konfiguriert waren, musste der Router in den \textit{interface configuration mode} versetzt werden. In diesem Zustand wurde anschließend der mobile IPv6 Home-Agent am Interface \textit{Dot11Radio 0/1/0.1} gestartet. Die erforderliche Schritte sind dem folgendem Quellcodeausschnitt \hyperref[WLANHA]{3.1} zu entnehmen.\\      
+Das, dem Subinterface \textit{Dot11Radio 0/1/0.1} zugewiesene, Netzwerk sollte als Heimnetz dienen. Nachdem die Subinterface erfolgreich konfiguriert wurden, musste der Router in den \textit{interface configuration mode} versetzt werden. In diesem Zustand wurde anschließend der mobile IPv6 Home-Agent am Interface \textit{Dot11Radio 0/1/0.1} gestartet. Die erforderliche Schritte sind dem folgendem Quellcodeausschnitt \hyperref[WLANHA]{3.1} zu entnehmen.\\      
  
 \lstinputlisting
 [caption={Mobile IPv6 HA am WLAN Interface}
@@ -142,7 +144,7 @@ Schlussendlich wurde der WLAN Ansatz durch eine Alternative ersetzt. Die Alterna
 \label{LAN_Ansatz}
 Da der Netzwerkwechsel aufgrund technischer Diskrepanzen nicht mit WLAN Netzen simuliert werden konnte, fiel die Entscheidung auf den Ansatz den Netzwechsel durch ein LAN Netzwerk zu ermöglichen.\\
 Dabei werden an jedem Interface des Routers verschieden Netzwerke konfiguriert. Es ist dann möglich die angeschlossenen Netzwerkkabel auf ein anderes Interface und somit in ein anderes Netzwerk zu stecken.\\
-Der Aufbau dieses Testnetzwerks ist der Topologie (refTopLAN) zu entnehmen.
+Der Aufbau dieses Testnetzwerks ist der Topologie \ref{Versuch2} zu entnehmen.
 
 Wie bei Punkt \ref{WLAN_Ansatz} wurde die Grundkonfiguration der Router aus Punkt \ref{Grundaufbau} übernommen. Am Router \textit{ISP2} war das Interface \textit{fa 0/0} noch nicht unter Verwendung und konnte somit als Home-Agent-Interface genutzt werden.\\
 An diesem Interface wurde der Mobile IPv6 Home-Agent Service konfiguriert, d.h. für den Mobilen Knoten stellte dieses Interface den Home-Agent dar.
@@ -226,7 +228,7 @@ Als Konsequenz daraus wurde nach einer alternativen Lösung gesucht. Eine Alterna
 \label{NEMOAnsatz}
 Mit Network Mobility kann man der fehlenden Intelligenz der Endgeräte entgegenwirken. Bei NEMO dient ein mobiler Router als mobiler Knoten. Somit wird ermöglicht, dass der mobile Knoten jederzeit erreichbar bleibt auch wenn dieser in Bewegung ist. Der mobile Router fungiert dabei als Ansprechpartner für den Home-Agnet, über den HA läuft die gesamte Kommunikation. Es werden sozusagen ganze Netzwerkteile bewegt, nicht nur die Endgeräte. Der mobile Router ist dazu im Stande Binding Updates zu senden. Eine detaillierte Beschreibung der Vorgehensweise bei NEMO befindet sich im Abschnitt \ref{nemo}.
 
-Für die Umsetzung dieses Szenarios wurde eine weitere Netzwerktopologie erstellt. Der Aufbau dieses Testnetzwerks ist der Topologie (refTopNEMO) zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet.
+Für die Umsetzung dieses Szenarios wurde eine weitere Netzwerktopologie erstellt. Der Aufbau dieses Testnetzwerks ist der Topologie \ref{Versuch3} zu entnehmen. Die Grundkonfiguration der Router wurde aus Punkt \ref{Grundaufbau} verwendet.
 
 Zunächst wurden analog zur Konfiguration aus Abschnitt \ref{LAN_Ansatz} das Interface \textit{fa 0/0} des Router \textit{ISP2} als Home-Agent deklariert, eine Access-List erstellt und die Binding Parameter festgelegt. Die erforderlichen Konfigurationsschritte können dem Ausschnitt \hyperref[NEMOHAACLB]{3.7} entnommen werden.\\
 

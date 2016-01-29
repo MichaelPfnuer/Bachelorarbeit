@@ -363,6 +363,7 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \include{Einleitung}
 \include{TheoretischerTeil}
 \renewcommand{\TheAuthor}{\ZotD}
+\include{NEMO}
 \include{PraktischerTeil_Materialien_Aufbau}
 \renewcommand{\TheAuthor}{\MarR}
 \include{Analyse_&_Config}
@@ -374,11 +375,12 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \renewcommand{\TheAuthor}{}
 \interlinepenalty=10000 % Literatureinträge: Absätze zusammenhalten
 %\clearpage
+\pagenumbering{Roman}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}   
 \bibliography{Michi}
 \interlinepenalty=100
 \newpage
-\pagenumbering{Roman}
+
 \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abkürzungen%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,15 +432,19 @@ Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige deutsch-sprachig Screen-shot Sc
 \clearpage
 
 % Anhang je nach Wunsch
-%\begin{appendices}
+\begin{appendices}
 %\addcontentsline{toc}{chapter}{Anhang}
-%\include{Anhang_Mathematik}                 % A
-%\include{Anhang_FormatDerParameterdateien}  % B
+\addcontentsline{toc}{section}{Anhang A}
+\include{Anhang/ISP_Config}                 % A
+\addcontentsline{toc}{section}{Anhang B}
+\include{Anhang/Anhang_WLAN}
+\addcontentsline{toc}{section}{Anhang C}
+\include{Anhang/MobileRouter_Grund}    				% B
 %\include{Anhang_Quelltexte}                 % C
 %\include{Anhang_Datenblaetter}              % D
 %\include{Anhang_Glossar}                    % E
 %\include{Verfasser-Einzelabschnitte}
-%\end{appendices}
+\end{appendices}
 
 
 % Schmutzblatt (leere Seite am Ende)
